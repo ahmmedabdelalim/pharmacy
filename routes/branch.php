@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Branch\ProductController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -46,6 +47,28 @@ Route::group(['namespace' => 'Branch', 'as' => 'branch.'], function () {
             Route::get('generate-invoice/{id}', 'OrderController@generate_invoice')->name('generate-invoice');
             Route::post('add-payment-ref-code/{id}', 'OrderController@add_payment_ref_code')->name('add-payment-ref-code');
         });
+
+        Route::group(['prefix' => 'product', 'as' => 'product.'], function () {
+            Route::get('add-new', 'ProductController@index')->name('add-new');
+            Route::post('variant-combination', 'ProductController@variant_combination')->name('variant-combination');
+            Route::post('store', 'ProductController@store')->name('store');
+            Route::get('edit/{id}', 'ProductController@edit')->name('edit');
+            Route::post('update/{id}', 'ProductController@update')->name('update');
+            Route::get('list', 'ProductController@list')->name('list');
+            Route::delete('delete/{id}', 'ProductController@delete')->name('delete');
+            Route::get('status/{id}/{status}', 'ProductController@status')->name('status');
+            Route::post('search', 'ProductController@search')->name('search');
+            Route::get('bulk-import', 'ProductController@bulk_import_index')->name('bulk-import');
+            Route::post('bulk-import', 'ProductController@bulk_import_data');
+            Route::get('bulk-export', 'ProductController@bulk_export_data')->name('bulk-export');
+
+            Route::get('view/{id}', 'ProductController@view')->name('view');
+            Route::get('remove-image/{id}/{name}', 'ProductController@remove_image')->name('remove-image');
+            //ajax request
+            Route::get('get-categories', 'ProductController@get_categories')->name('get-categories');
+            Route::post('daily-needs', 'ProductController@daily_needs')->name('daily-needs');
+        });
+
 
         Route::group(['prefix' => 'order', 'as' => 'order.'], function () {
             Route::get('list/{status}', 'OrderController@list')->name('list');
