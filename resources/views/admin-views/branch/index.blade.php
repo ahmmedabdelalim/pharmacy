@@ -23,6 +23,14 @@
                     @csrf
                     <div class="row">
                         <div class="col-6">
+                            <div  class="form-group">
+                                <input type="file" name="products_file">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('name')}}</label>
                                 <input type="text" name="name" class="form-control" placeholder="New branch" required>
@@ -128,7 +136,7 @@
                                 <th style="width: 50%">{{\App\CentralLogics\translate('email')}}</th>
                                 <th style="width: 10%">{{\App\CentralLogics\translate('action')}}</th>
                             </tr>
-                            
+
                             </thead>
 
                             <tbody>

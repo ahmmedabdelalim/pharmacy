@@ -321,7 +321,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> 
                         <!-- End Pages -->
 
                         <li class="nav-item">

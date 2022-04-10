@@ -12,6 +12,7 @@ class Branch extends Authenticatable
     protected $casts = [
         'coverage' => 'integer',
         'created_at' => 'datetime',
-        'updated_at' => 'datetime'
+        'updated_at' => 'datetime',
+        'products_file'=>'file',
     ];
 }
