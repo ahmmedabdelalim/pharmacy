@@ -31,7 +31,7 @@ class MedicineController extends Controller
 
     public function products()
     {
-        $products = Product::all();
+        $products = Product::search()->get();
         return responseJson(1, 'success', $products);
 
     }
