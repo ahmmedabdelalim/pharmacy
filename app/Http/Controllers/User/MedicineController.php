@@ -12,19 +12,19 @@ class MedicineController extends Controller
 {
     public function categories()
     {
-        try{
-        //  dd(5);
+        try {
+            //  dd(5);
 
-        $categories = Category::all();
+            $categories = Category::all();
+//
+//            $data['code'] = 200;
+//            $data['message'] = 'success';
+//            $data['error'] = NULL;
+//            $data['data'] = $categories;
+//            return json_encode($data);
 
-        $data['code']    = 200;
-        $data['message'] = 'success';
-        $data['error']   = NULL;
-        $data['data']    = $categories;
-        return json_encode($data);
-        }
-        catch(\Exception $ex)
-        {
+            return responseJson(1, 'success', $categories);
+        } catch (\Exception $ex) {
             dd($ex);
         }
     }
@@ -32,11 +32,7 @@ class MedicineController extends Controller
     public function products()
     {
         $products = Product::all();
+        return responseJson(1, 'success', $products);
 
-        $data['code']    = 200;
-        $data['message'] = 'success';
-        $data['error']   = NULL;
-        $data['data']    = $products;
-        return json_encode($data);
     }
 }

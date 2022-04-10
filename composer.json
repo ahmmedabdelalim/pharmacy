@@ -63,7 +63,8 @@
             "app/CentralLogics/product.php",
             "app/CentralLogics/helpers.php",
             "app/CentralLogics/order.php",
-            "app/CentralLogics/sms_module.php"
+            "app/CentralLogics/sms_module.php",
+            "app/Helpers/helper.php"
         ],
         "psr-4": {
             "App\\": "app/"
