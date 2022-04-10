@@ -50,6 +50,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapBranchRoutes();
 
+        $this->mapApi_V2Routes();
+
         //$this->mapUpdateRoutes();
 
         //$this->mapInstallRoutes();
@@ -68,6 +70,15 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
     }
+
+    protected function mapApi_V2Routes()
+    {
+        Route::prefix('api_v2')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api/api_v2.php'));
+    }
+
 
 
     protected function mapAdminRoutes()

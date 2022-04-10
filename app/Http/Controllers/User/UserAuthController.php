@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Auth;
+namespace App\Http\Controllers\User;
 
 use App\CentralLogics\Helpers;
 use App\CentralLogics\SMS_module;
@@ -16,8 +16,11 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
-class CustomerAuthController extends Controller
+
+class UserAuthController extends Controller
 {
+    //
+
     public function check_phone(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -129,10 +132,14 @@ class CustomerAuthController extends Controller
         ]], 404);
     }
 
+
+
     public function registration(Request $request)
-    {
+{
         // dd(2);
-        $validator = Validator::make($request->all(), [
+        try
+
+        {$validator = Validator::make($request->all(), [
             'f_name' => 'required',
             'l_name' => 'required',
             'email' => 'required|unique:users',
@@ -156,7 +163,7 @@ class CustomerAuthController extends Controller
             'temporary_token' => $temporary_token,
         ]);
 
-        dd($user);
+        // dd($user);
         //$phone_verification = Helpers::get_business_settings('phone_verification');
         //$email_verification = Helpers::get_business_settings('email_verification');
         // if ($phone_verification && !$user->is_phone_verified) {
@@ -168,11 +175,22 @@ class CustomerAuthController extends Controller
 
         $token = $user->createToken('RestaurantCustomerAuth')->accessToken;
 
-
-       // return response()->json(['token' => $token], 200);
+        // dd($token);
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $token;
+        return json_encode($data);
+    }
+    catch(\Exception $ex)
+    {
+        dd($ex);
     }
 
-    public function login(Request $request)
+       // return response()->json(['token' => $token], 200);
+ }
+
+ public function login(Request $request)
     {
 
         if($request->has('email_or_phone'))
@@ -215,7 +233,11 @@ class CustomerAuthController extends Controller
             if (auth()->attempt($data)) {
                 $token = auth()->user()->createToken('RestaurantCustomerAuth')->accessToken;
 
-                return response()->json(['token' => $token], 200);
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $token;
+        return json_encode($data);
             }
         }
 
@@ -226,4 +248,5 @@ class CustomerAuthController extends Controller
         ], 401);
 
     }
+
 }

@@ -3,23 +3,40 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Model\Category;
 use App\Model\Product;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 
 class MedicineController extends Controller
 {
     public function categories()
     {
-        return "menna";
-       return $categories = Category::all();
-//        return $categories;
-        return responseJson(1, "success", $categories);
+        try{
+        //  dd(5);
+
+        $categories = Category::all();
+
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $categories;
+        return json_encode($data);
+        }
+        catch(\Exception $ex)
+        {
+            dd($ex);
+        }
     }
 
     public function products()
     {
         $products = Product::all();
-        return responseJson(1, 'success', $products);
-    }
 
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $products;
+        return json_encode($data);
+    }
 }
