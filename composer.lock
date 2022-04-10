@@ -106,7 +106,8 @@
                     "Barryvdh\\Debugbar\\": "src/"
                 },
                 "files": [
-                    "src/helpers.php"
+                    "src/helpers.php",
+                    "Helpers/helper.php"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",

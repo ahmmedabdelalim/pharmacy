@@ -1,8 +1,12 @@
 <?php
-
+//
 use Illuminate\Support\Facades\Route;
 
-Route::group(['namespace' => 'Api\V1', 'middleware'=>'localization'], function () {
+Route::get('/user/categories', 'User\MedicineController@categories');
+Route::get('/user/products', 'User\MedicineController@products');
+
+
+Route::group(['namespace' => 'Api\V1', 'middleware' => 'localization'], function () {
 
     Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
         Route::post('register', 'CustomerAuthController@registration');
