@@ -15,6 +15,16 @@ class CreatePharmacyProductTable extends Migration
     {
         Schema::create('pharmacy_product', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description');
+            $table->string('image');
+            $table->double('price');
+            $table->tinyInteger('status');
+            $table->integer('category_id');
+            $table->string('composition');
+            $table->text('indication');
+            $table->string('dosage');
+            $table->text('warnings');
             $table->timestamps();
         });
     }
