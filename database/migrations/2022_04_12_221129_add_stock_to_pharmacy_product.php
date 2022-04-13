@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStockToProducts extends Migration
+class AddStockToPharmacyProduct extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class AddStockToProducts extends Migration
      */
     public function up()
     {
-        if (!Schema::hasColumn('products', 'total_stock')) {
-            Schema::table('products', function (Blueprint $table) {
-                $table->bigInteger('total_stock')->default(0);
-            });
-        }
+        Schema::table('pharmacy_product', function (Blueprint $table) {
+            //
+            $table->integer('stock');
+        });
     }
 
     /**
@@ -27,8 +26,8 @@ class AddStockToProducts extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('total_stock');
+        Schema::table('pharmacy_product', function (Blueprint $table) {
+            //
         });
     }
 }
