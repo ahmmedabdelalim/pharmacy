@@ -148,7 +148,7 @@
                                 <th style="width: 30%">{{\App\CentralLogics\translate('name')}}</th>
                                 <th style="width: 25%">{{\App\CentralLogics\translate('image')}}</th>
                                 <th>{{\App\CentralLogics\translate('status')}}</th>
-                                <th>{{\App\CentralLogics\translate('daily_needs')}}</th>
+                                {{-- <th>{{\App\CentralLogics\translate('daily_needs')}}</th> --}}
                                 <th>{{\App\CentralLogics\translate('price')}}</th>
                                 <th>{{\App\CentralLogics\translate('stock')}}</th>
                                 <th>{{\App\CentralLogics\translate('action')}}</th>
@@ -189,17 +189,17 @@
                                             </div>
                                         @endif
                                     </td>
-                                    <td>
+                                    {{-- <td>
                                         <label class="switch ml-2">
                                             <input type="checkbox" class="status"
                                                    onchange="daily_needs('{{$product['id']}}','{{$product->daily_needs==1?0:1}}')"
                                                    id="{{$product['id']}}" {{$product->daily_needs == 1?'checked':''}}>
                                             <span class="slider round"></span>
                                         </label>
-                                    </td>
+                                    </td> --}}
                                     <td>{{$product['price']." ".\App\CentralLogics\Helpers::currency_symbol()}}</td>
                                     <td>
-                                        <label class="badge badge-soft-info">{{$product['total_stock']}}</label>
+                                        <label class="badge badge-soft-info">{{$product['stock']}}</label>
                                     </td>
                                     <td>
                                         <!-- Dropdown -->

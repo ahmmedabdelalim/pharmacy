@@ -334,4 +334,8 @@
   'selected' => 'Selected',
   'Customer Name' => 'Customer Name',
   'Address' => 'Address',
+  'composition' => 'Composition',
+  'indication' => 'Indication',
+  'dosage' => 'Dosage',
+  'warnings' => 'Warnings',
 );

@@ -22,7 +22,7 @@
         <!-- End Page Header -->
         <div class="row gx-2 gx-lg-3">
             <div class="col-sm-12 col-lg-12 mb-3 mb-lg-2">
-                <form action="javascript:" method="post" id="product_form" 
+                <form action="javascript:" method="post" id="product_form"
                       enctype="multipart/form-data">
                     @csrf
                     @php($language=\App\Model\BusinessSetting::where('key','language')->first())
@@ -45,13 +45,29 @@
                                     <label class="input-label" for="{{$lang}}_name">{{\App\CentralLogics\translate('name')}} ({{strtoupper($lang)}})</label>
                                     <input type="text" {{$lang == $default_lang? 'required':''}} name="name[]" id="{{$lang}}_name" class="form-control" placeholder="New Product" >
                                 </div>
+                                <div class="form-group">
+                                    <label class="input-label" for="{{$lang}}_composition">{{\App\CentralLogics\translate('composition')}} ({{strtoupper($lang)}})</label>
+                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="composition[]" id="{{$lang}}_composition" class="form-control" placeholder="composition" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-label" for="{{$lang}}_indication">{{\App\CentralLogics\translate('indication')}} ({{strtoupper($lang)}})</label>
+                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="indication[]" id="{{$lang}}_indication" class="form-control" placeholder="indication" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-label" for="{{$lang}}_dosage">{{\App\CentralLogics\translate('dosage')}} ({{strtoupper($lang)}})</label>
+                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="dosage[]" id="{{$lang}}_dosage" class="form-control" placeholder="dosage" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="input-label" for="{{$lang}}_warnings">{{\App\CentralLogics\translate('warnings')}} ({{strtoupper($lang)}})</label>
+                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="warnings[]" id="{{$lang}}_warnings" class="form-control" placeholder="warnings" >
+                                </div>
                                 <input type="hidden" name="lang[]" value="{{$lang}}">
                                  <div class="form-group pt-4">
                                     <label class="input-label"
                                            for="{{$lang}}_description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  ({{strtoupper($lang)}})</label>
                                     <div id="{{$lang}}_editor" style="min-height: 15rem;"></div>
                                     <textarea name="description[]" style="display:none" id="{{$lang}}_hiddenArea"></textarea>
-                                </div> 
+                                </div>
                                 {{--<div class="form-group pt-4">
                                     <label class="input-label"
                                            for="{{$lang}}_description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  ({{strtoupper($lang)}})</label>
@@ -65,17 +81,33 @@
                                 <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('name')}} (EN)</label>
                                 <input type="text" name="name[]" class="form-control" placeholder="New Product" required>
                             </div>
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('composition')}} (EN)</label>
+                                <input type="text" name="composition[]" class="form-control" placeholder="composition" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('indication')}} (EN)</label>
+                                <input type="text" name="indication[]" class="form-control" placeholder="indication" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('dosage')}} (EN)</label>
+                                <input type="text" name="dosage[]" class="form-control" placeholder="dosage" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('warnings')}} (EN)</label>
+                                <input type="text" name="warnings[]" class="form-control" placeholder="warnings" required>
+                            </div>
                             <input type="hidden" name="lang[]" value="en">
                              <div class="form-group pt-4">
                                 <label class="input-label"
                                        for="exampleFormControlInput1">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}} (EN)</label>
                                 <div id="editor" style="min-height: 15rem;"></div>
                                 <textarea name="description[]" style="display:none" id="hiddenArea"></textarea>
-                            </div> 
+                            </div>
                             {{--<div class="form-group pt-4">
                                 <label class="input-label"
                                        for="exampleFormControlInput1">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}} (EN)</label>
-                                
+
                                 <textarea name="description[]" style="min-height: 15rem;width:100%" id="hiddenArea"></textarea>
                             </div>--}}
                         </div>
@@ -91,7 +123,7 @@
                                            placeholder="Ex : 100" required>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            {{-- <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('unit')}}</label>
@@ -102,8 +134,8 @@
                                         <option value="pc">{{\App\CentralLogics\translate('pc')}}</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-6">
+                            </div> --}}
+                            {{-- <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('tax')}}</label>
@@ -111,8 +143,8 @@
                                            class="form-control"
                                            placeholder="Ex : 7" required>
                                 </div>
-                            </div>
-                            <div class="col-6">
+                            </div> --}}
+                            {{-- <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('tax')}} {{\App\CentralLogics\translate('type')}}</label>
@@ -121,11 +153,11 @@
                                         <option value="amount">{{\App\CentralLogics\translate('amount')}}</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="row">
-                            <div class="ol-md-4 col-4">
+                            {{-- <div class="ol-md-4 col-4">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('capacity')}}</label>
@@ -133,16 +165,16 @@
                                            class="form-control"
                                            placeholder="Ex : 5" required>
                                 </div>
-                            </div>
-                            <div class="col-md-4 col-4">
+                            </div> --}}
+                            {{-- <div class="col-md-4 col-4">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('discount')}}</label>
                                     <input type="number" min="0" max="100000" value="0" name="discount" class="form-control"
                                            placeholder="Ex : 100">
                                 </div>
-                            </div>
-                            <div class="col-md-4 col-4">
+                            </div> --}}
+                            {{-- <div class="col-md-4 col-4">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('discount')}} {{\App\CentralLogics\translate('type')}}</label>
@@ -151,7 +183,7 @@
                                         <option value="amount">{{\App\CentralLogics\translate('amount')}}</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="row">
@@ -159,7 +191,7 @@
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('stock')}}</label>
-                                    <input type="number" min="0" max="100000000" value="0" name="total_stock" class="form-control"
+                                    <input type="number" min="0" max="100000000" value="0" name="stock" class="form-control"
                                            placeholder="Ex : 100">
                                 </div>
                             </div>
@@ -177,7 +209,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-12">
+                            {{-- <div class="col-md-4 col-12">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlSelect1">{{\App\CentralLogics\translate('sub_category')}}<span
@@ -188,7 +220,7 @@
 
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             {{--<div class="col-md-4 col-6">
                                 <div class="form-group">
                                     <label class="input-label" for="exampleFormControlSelect1">Sub Sub Category<span
@@ -201,7 +233,7 @@
                             </div>--}}
                         </div>
 
-                        <div class="row"
+                        {{-- <div class="row"
                              style="border: 1px solid #80808045; border-radius: 10px;padding-top: 10px;margin: 1px">
                             <div class="col-12">
                                 <div class="form-group">
@@ -228,7 +260,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label>{{\App\CentralLogics\translate('product')}} {{\App\CentralLogics\translate('image')}}</label><small
@@ -403,33 +435,33 @@
             });
         });
 
-        function add_more_customer_choice_option(i, name) {
-            let n = name.split(' ').join('');
-            $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="Choice Title" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="Enter choice values" data-role="tagsinput" onchange="combination_update()"></div></div>');
-            $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
-        }
+        // function add_more_customer_choice_option(i, name) {
+        //     let n = name.split(' ').join('');
+        //     $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="Choice Title" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="Enter choice values" data-role="tagsinput" onchange="combination_update()"></div></div>');
+        //     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
+        // }
 
-        function combination_update() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+        // function combination_update() {
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
 
-            $.ajax({
-                type: "POST",
-                url: '{{route('admin.product.variant-combination')}}',
-                data: $('#product_form').serialize(),
-                success: function (data) {
-                    $('#variant_combination').html(data.view);
-                    if (data.length > 1) {
-                        $('#quantity').hide();
-                    } else {
-                        $('#quantity').show();
-                    }
-                }
-            });
-        }
+        //     $.ajax({
+        //         type: "POST",
+        //         url: '{{route('admin.product.variant-combination')}}',
+        //         data: $('#product_form').serialize(),
+        //         success: function (data) {
+        //             $('#variant_combination').html(data.view);
+        //             if (data.length > 1) {
+        //                 $('#quantity').hide();
+        //             } else {
+        //                 $('#quantity').show();
+        //             }
+        //         }
+        //     });
+        // }
     </script>
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -488,12 +520,12 @@
             }
             if(qty_elements.length > 0)
             {
-                $('input[name="total_stock"]').attr("readonly", true);
-                $('input[name="total_stock"]').val(total_qty);
+                $('input[name="stock"]').attr("readonly", true);
+                $('input[name="stock"]').val(total_qty);
                 console.log(total_qty)
             }
             else{
-                $('input[name="total_stock"]').attr("readonly", false);
+                $('input[name="stock"]').attr("readonly", false);
             }
         }
     </script>
