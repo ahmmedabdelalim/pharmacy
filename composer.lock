@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f5b983f02bf2c4f5be09453b95d4488",
+    "content-hash": "a59b6bf2a9725f36299c1e401434edba",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1881,20 +1881,20 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.20.1",
+            "version": "v1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "3a1a5c5b5a3006b3d05256d5df7066f37252112c"
+                "reference": "73392bad2eb6852eea9084b6bbdec752515cb849"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/3a1a5c5b5a3006b3d05256d5df7066f37252112c",
-                "reference": "3a1a5c5b5a3006b3d05256d5df7066f37252112c",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/73392bad2eb6852eea9084b6bbdec752515cb849",
+                "reference": "73392bad2eb6852eea9084b6bbdec752515cb849",
                 "shasum": ""
             },
             "require": {
-                "firebase/php-jwt": "~5.0",
+                "firebase/php-jwt": "^5.5||^6.0",
                 "guzzlehttp/guzzle": "^6.2.1|^7.0",
                 "guzzlehttp/psr7": "^1.7|^2.0",
                 "php": "^7.1||^8.0",
@@ -1933,9 +1933,9 @@
             "support": {
                 "docs": "https://googleapis.github.io/google-auth-library-php/main/",
                 "issues": "https://github.com/googleapis/google-auth-library-php/issues",
-                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.20.1"
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.21.0"
             },
-            "time": "2022-04-12T15:24:52+00:00"
+            "time": "2022-04-13T20:35:52+00:00"
         },
         {
             "name": "google/cloud-core",
@@ -6703,16 +6703,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.122.0",
+            "version": "v7.123.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "c58179aa4cad16240a6e65dbf29c2bfd4ae0c033"
+                "reference": "4e44559275eb66dc44f14c4c8dd3fedf9ed33ef9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/c58179aa4cad16240a6e65dbf29c2bfd4ae0c033",
-                "reference": "c58179aa4cad16240a6e65dbf29c2bfd4ae0c033",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/4e44559275eb66dc44f14c4c8dd3fedf9ed33ef9",
+                "reference": "4e44559275eb66dc44f14c4c8dd3fedf9ed33ef9",
                 "shasum": ""
             },
             "require": {
@@ -6757,9 +6757,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.122.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.123.0"
             },
-            "time": "2022-04-08T16:57:33+00:00"
+            "time": "2022-04-13T23:12:59+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -12188,7 +12188,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "7.4.11",
+        "php": "7.4.28",
         "ext-curl": "*",
         "ext-json": "*"
     },
