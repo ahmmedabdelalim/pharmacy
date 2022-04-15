@@ -36,7 +36,7 @@
 
                     <li class="nav-item d-none d-sm-inline-block">
                         <!-- Notification -->
-                        <div class="hs-unfold">
+                        {{-- <div class="hs-unfold">
                             <a class="js-hs-unfold-invoker btn btn-icon btn-ghost-secondary rounded-circle"
                                href="{{route('admin.message.list')}}">
                                 <i class="tio-messages-outlined"></i>
@@ -45,7 +45,7 @@
                                     <span class="btn-status btn-sm-status btn-status-danger"></span>
                                 @endif
                             </a>
-                        </div>
+                        </div> --}}
                         <!-- End Notification -->
                     </li>
 
