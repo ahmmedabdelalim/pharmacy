@@ -43,12 +43,12 @@
                         <!-- End Dashboards -->
 
                         <!-- POS Section -->
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <small
                                 class="nav-subtitle">{{\App\CentralLogics\translate('pos')}} {{\App\CentralLogics\translate('system')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                        </li>
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/pos*')?'active':''}}">
+                        </li> --}}
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/pos*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
                                 <i class="tio-shopping nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CentralLogics\translate('POS')}}</span>
@@ -74,17 +74,17 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!-- End POS -->
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <small
                                 class="nav-subtitle">{{\App\CentralLogics\translate('order')}} {{\App\CentralLogics\translate('section')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                        </li>
+                        </li> --}}
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/orders*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/orders*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:">
                                 <i class="tio-shopping-cart nav-icon"></i>
                                 <span class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">
@@ -195,7 +195,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
 
@@ -206,7 +206,7 @@
                         </li>
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/banner*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/banner*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
                             >
                                 <i class="tio-image nav-icon"></i>
@@ -229,7 +229,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
 
@@ -251,13 +251,13 @@
                                     </a>
                                 </li>
 
-                                <li class="nav-item {{Request::is('admin/category/add-sub-category')?'active':''}}">
+                                {{-- <li class="nav-item {{Request::is('admin/category/add-sub-category')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.category.add-sub-category')}}"
                                        title="add new sub category">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{\App\CentralLogics\translate('sub_category')}}</span>
                                     </a>
-                                </li>
+                                </li> --}}
 
                                 {{--<li class="nav-item {{Request::is('admin/category/add-sub-sub-category')?'active':''}}">
                                     <a class="nav-link " href="{{route('admin.category.add-sub-sub-category')}}"
@@ -272,7 +272,7 @@
 
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/attribute*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/attribute*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.attribute.add-new')}}"
                             >
@@ -281,7 +281,7 @@
                                     {{\App\CentralLogics\translate('attribute')}}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
                         <!-- Pages -->
@@ -324,11 +324,11 @@
                         </li> 
                         <!-- End Pages -->
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <small class="nav-subtitle"
                                    title="Layouts">{{\App\CentralLogics\translate('business')}} {{\App\CentralLogics\translate('section')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                        </li>
+                        </li> --}}
 
                         <!-- Pages -->
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/branch*')?'active':''}}">
@@ -355,14 +355,14 @@
                             </a>
                         </li>
                         <!-- End Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/timeSlot*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/timeSlot*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link" href="{{route('admin.timeSlot.add-new')}}"
                                title="Pages">
                                 <i class="tio-clock nav-icon"></i>
                                 <span
                                     class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CentralLogics\translate('Set')}} {{\App\CentralLogics\translate('Time Slot')}} </span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <!-- Pages -->
                         <li class="navbar-vertical-aside-has-menu {{Request::is('admin/reviews*')?'active':''}}">
@@ -379,7 +379,7 @@
 
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/notification*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/notification*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.notification.add-new')}}"
                             >
@@ -388,11 +388,11 @@
                                     {{\App\CentralLogics\translate('send')}} {{\App\CentralLogics\translate('notification')}}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/coupon*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/coupon*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.coupon.add-new')}}"
                             >
@@ -400,7 +400,7 @@
                                 <span
                                     class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CentralLogics\translate('coupon')}}</span>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
                         <!-- Pages -->
@@ -498,14 +498,14 @@
                         </li>
                         <!-- End Pages -->
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <small class="nav-subtitle"
                                    title="Layouts">{{\App\CentralLogics\translate('deliveryman')}} {{\App\CentralLogics\translate('section')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                        </li>
+                        </li> --}}
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/delivery-man/add')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/delivery-man/add')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.delivery-man.add')}}"
                             >
@@ -514,11 +514,11 @@
                                     {{\App\CentralLogics\translate('register')}}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/delivery-man/list')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/delivery-man/list')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.delivery-man.list')}}"
                             >
@@ -527,9 +527,9 @@
                                     {{\App\CentralLogics\translate('list')}}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
 
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/delivery-man/reviews/list')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/delivery-man/reviews/list')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.delivery-man.reviews.list')}}"
                             >
@@ -538,7 +538,7 @@
                                     {{\App\CentralLogics\translate('reviews')}}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
                         <li class="nav-item">
@@ -564,14 +564,14 @@
                             <div class="nav-divider"></div>
                         </li>
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <small class="nav-subtitle"
                                    title="Documentation">{{\App\CentralLogics\translate('report_and_analytics')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                        </li>
+                        </li> --}}
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/report*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/report*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
                             >
                                 <i class="tio-report-outlined nav-icon"></i>
@@ -603,7 +603,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
                         <li class="nav-item" style="padding-top: 100px">
