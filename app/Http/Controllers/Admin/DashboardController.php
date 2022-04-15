@@ -18,50 +18,50 @@ class DashboardController extends Controller
 {
     public function dashboard()
     {
-        $top_sell = OrderDetail::with(['product'])
-            ->select('product_id', DB::raw('SUM(quantity) as count'))
-            ->groupBy('product_id')
-            ->orderBy("count", 'desc')
-            ->take(6)
-            ->get();
+        // $top_sell = OrderDetail::with(['product'])
+        //     ->select('product_id', DB::raw('SUM(quantity) as count'))
+        //     ->groupBy('product_id')
+        //     ->orderBy("count", 'desc')
+        //     ->take(6)
+        //     ->get();
 
-        $most_rated_products = Review::with(['product'])
-            ->select(['product_id',
-                DB::raw('AVG(rating) as ratings_average'),
-                DB::raw('COUNT(rating) as total'),
-            ])
-            ->groupBy('product_id')
-            ->orderBy("total", 'desc')
-            ->take(6)
-            ->get();
+        // $most_rated_products = Review::with(['product'])
+        //     ->select(['product_id',
+        //         DB::raw('AVG(rating) as ratings_average'),
+        //         DB::raw('COUNT(rating) as total'),
+        //     ])
+        //     ->groupBy('product_id')
+        //     ->orderBy("total", 'desc')
+        //     ->take(6)
+        //     ->get();
 
-        $top_customer = Order::with(['customer'])
-            ->select('user_id', DB::raw('COUNT(user_id) as count'))
-            ->groupBy('user_id')
-            ->orderBy("count", 'desc')
-            ->take(6)
-            ->get();
+        // $top_customer = Order::with(['customer'])
+        //     ->select('user_id', DB::raw('COUNT(user_id) as count'))
+        //     ->groupBy('user_id')
+        //     ->orderBy("count", 'desc')
+        //     ->take(6)
+        //     ->get();
 
-        $data = self::order_stats_data();
+        // $data = self::order_stats_data();
 
-        $data['customer'] = User::count();
-        $data['product'] = Product::count();
-        $data['order'] = Order::count();
-        $data['category'] = Category::count();
-        $data['branch'] = Branch::count();
+        // $data['customer'] = User::count();
+        // $data['product'] = Product::count();
+        // $data['order'] = Order::count();
+        // $data['category'] = Category::count();
+        // $data['branch'] = Branch::count();
 
-        $data['top_sell'] = $top_sell;
-        $data['most_rated_products'] = $most_rated_products;
-        $data['top_customer'] = $top_customer;
+        // $data['top_sell'] = $top_sell;
+        // $data['most_rated_products'] = $most_rated_products;
+        // $data['top_customer'] = $top_customer;
 
-        $earning=[];
-        for ($i=1;$i<=12;$i++){
-            $from = date('Y-'.$i.'-01');
-            $to = date('Y-'.$i.'-30');
-            $earning[$i] = Order::where(['order_status'=>'delivered'])->whereBetween('created_at', [$from, $to])->sum('order_amount');
-        }
+        // $earning=[];
+        // for ($i=1;$i<=12;$i++){
+        //     $from = date('Y-'.$i.'-01');
+        //     $to = date('Y-'.$i.'-30');
+        //     $earning[$i] = Order::where(['order_status'=>'delivered'])->whereBetween('created_at', [$from, $to])->sum('order_amount');
+        // }
 
-        return view('admin-views.dashboard', compact('data', 'earning'));
+        return view('admin-views.dashboard', );
     }
 
     public function order_stats(Request $request)

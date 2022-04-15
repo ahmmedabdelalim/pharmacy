@@ -12,7 +12,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
     /*authentication*/
 
     Route::group(['middleware' => ['admin']], function () {
-        Route::get('/', 'DashboardController@dashboard')->name('dashboard');
+        Route::get('/', 'DashboardController@dashboard')->name('dashboard'); 
         Route::post('order-stats', 'DashboardController@order_stats')->name('order-stats');
         Route::get('settings', 'SystemController@settings')->name('settings');
         Route::post('settings', 'SystemController@settings_update');
