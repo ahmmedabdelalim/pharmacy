@@ -58,7 +58,7 @@ CREATE TABLE `banners` (
 --
 -- Table structure for table `branches`
 --
-
+ 
 CREATE TABLE `branches` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `restaurant_id` bigint(20) DEFAULT NULL,
