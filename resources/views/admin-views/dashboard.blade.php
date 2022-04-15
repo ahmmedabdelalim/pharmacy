@@ -271,35 +271,7 @@
                     }
                 });
             </script>
-            <script>
-                function order_stats_update(type) {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    });
-
-                    $.ajax({
-                        url: "{{route('admin.order-stats')}}",
-                        type: "post",
-                        data: {
-                            statistics_type: type,
-                        },
-                        beforeSend: function () {
-                            $('#loading').show()
-                        },
-                        success: function (data) {
-                            $('#order_stats').html(data.view)
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus, errorThrown);
-                        },
-                        complete: function () {
-                            $('#loading').hide()
-                        }
-                    });
-                }
-            </script>
+             
 
             <script>
                 // INITIALIZATION OF CHARTJS
