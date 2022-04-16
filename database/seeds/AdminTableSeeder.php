@@ -14,7 +14,7 @@ class AdminTableSeeder extends Seeder
     public function run()
     {
         DB::table('admins')->insert([
-            'id' => 1,
+            'id' => 3,
             'f_name' => 'Master Admin',
             'l_name' => 'Khandakar',
             'phone' => '01759412381',
@@ -25,5 +25,5 @@ class AdminTableSeeder extends Seeder
             'created_at'=>now(),
             'updated_at'=>now()
         ]);
-    } 
+    }
 }
