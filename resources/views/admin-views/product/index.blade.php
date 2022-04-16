@@ -25,58 +25,12 @@
                 <form action="javascript:" method="post" id="product_form"
                       enctype="multipart/form-data">
                     @csrf
-                    @php($language=\App\Model\BusinessSetting::where('key','language')->first())
-                    @php($language = $language->value ?? null)
-                    @php($default_lang = 'bn')
-                    @if($language)
-                        @php($default_lang = json_decode($language)[0])
-                        <ul class="nav nav-tabs mb-4">
 
-                            @foreach(json_decode($language) as $lang)
-                                <li class="nav-item">
-                                    <a class="nav-link lang_link {{$lang == $default_lang? 'active':''}}" href="#" id="{{$lang}}-link">{{\App\CentralLogics\Helpers::get_language_name($lang).'('.strtoupper($lang).')'}}</a>
-                                </li>
-                            @endforeach
 
-                        </ul>
-                        @foreach(json_decode($language) as $lang)
-                            <div class="card p-4 {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                                <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_name">{{\App\CentralLogics\translate('name')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="name[]" id="{{$lang}}_name" class="form-control" placeholder="New Product" >
-                                </div>
-                                <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_composition">{{\App\CentralLogics\translate('composition')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="composition[]" id="{{$lang}}_composition" class="form-control" placeholder="composition" >
-                                </div>
-                                <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_indication">{{\App\CentralLogics\translate('indication')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="indication[]" id="{{$lang}}_indication" class="form-control" placeholder="indication" >
-                                </div>
-                                <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_dosage">{{\App\CentralLogics\translate('dosage')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="dosage[]" id="{{$lang}}_dosage" class="form-control" placeholder="dosage" >
-                                </div>
-                                <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_warnings">{{\App\CentralLogics\translate('warnings')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="warnings[]" id="{{$lang}}_warnings" class="form-control" placeholder="warnings" >
-                                </div>
-                                <input type="hidden" name="lang[]" value="{{$lang}}">
-                                 <div class="form-group pt-4">
-                                    <label class="input-label"
-                                           for="{{$lang}}_description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  ({{strtoupper($lang)}})</label>
-                                    <div id="{{$lang}}_editor" style="min-height: 15rem;"></div>
-                                    <textarea name="description[]" style="display:none" id="{{$lang}}_hiddenArea"></textarea>
-                                </div>
-                                {{--<div class="form-group pt-4">
-                                    <label class="input-label"
-                                           for="{{$lang}}_description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  ({{strtoupper($lang)}})</label>
-                                    <textarea name="description[]" style="min-height: 15rem;width:100%" id="{{$lang}}_hiddenArea"></textarea>
-                                </div>--}}
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="card p-4" id="{{$default_lang}}-form">
+
+
+
+                        <div class="card p-4" id="form">
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('name')}} (EN)</label>
                                 <input type="text" name="name[]" class="form-control" placeholder="New Product" required>
@@ -111,7 +65,7 @@
                                 <textarea name="description[]" style="min-height: 15rem;width:100%" id="hiddenArea"></textarea>
                             </div>--}}
                         </div>
-                    @endif
+
                     <div id="from_part_2">
                         <div class="row">
                             <div class="col-6">
@@ -286,85 +240,42 @@
 @push('script_2')
     <script src="{{asset('public/assets/admin/js/spartan-multi-image-picker.js')}}"></script>
     <script>
-        $(".lang_link").click(function(e){
-            e.preventDefault();
-            $(".lang_link").removeClass('active');
-            $(".lang_form").addClass('d-none');
-            $(this).addClass('active');
-
-            let form_id = this.id;
-            let lang = form_id.split("-")[0];
-            console.log(lang);
-            $("#"+lang+"-form").removeClass('d-none');
-            if(lang == '{{$default_lang}}')
-            {
-                $("#from_part_2").removeClass('d-none');
-            }
-            else
-            {
-                $("#from_part_2").addClass('d-none');
-            }
 
 
-        })
+
+        // })
     </script>
 
     <script>
-        @if($language)
-        @foreach(json_decode($language) as $lang)
-        var en_quill = new Quill('#{{$lang}}_editor', {
-            theme: 'snow'
-        });
-        @endforeach
-        @else
-        var bn_quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-        @endif
 
-        $('#product_form').on('submit', function () {
-            @if($language)
-            @foreach(json_decode($language) as $lang)
-            var {{$lang}}_myEditor = document.querySelector('#{{$lang}}_editor')
-            $("#{{$lang}}_hiddenArea").val({{$lang}}_myEditor.children[0].innerHTML);
-            @endforeach
-            @else
-            var myEditor = document.querySelector('#editor')
-            $("#hiddenArea").val(myEditor.children[0].innerHTML);
-            @endif
 
-            var formData = new FormData(this);
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.post({
-                url: '{{route('admin.product.store')}}',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data.errors) {
-                        for (var i = 0; i < data.errors.length; i++) {
-                            toastr.error(data.errors[i].message, {
-                                CloseButton: true,
-                                ProgressBar: true
-                            });
-                        }
-                    } else {
-                        toastr.success('product uploaded successfully!', {
-                            CloseButton: true,
-                            ProgressBar: true
-                        });
-                        setTimeout(function () {
-                            location.href = '{{route('admin.product.list')}}';
-                        }, 2000);
-                    }
-                }
-            });
-        });
+         
+        //     $.post({
+        //         url: '{{route('admin.product.store')}}',
+        //         data: formData,
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         success: function (data) {
+        //             if (data.errors) {
+        //                 for (var i = 0; i < data.errors.length; i++) {
+        //                     toastr.error(data.errors[i].message, {
+        //                         CloseButton: true,
+        //                         ProgressBar: true
+        //                     });
+        //                 }
+        //             } else {
+        //                 toastr.success('product uploaded successfully!', {
+        //                     CloseButton: true,
+        //                     ProgressBar: true
+        //                 });
+        //                 setTimeout(function () {
+        //                     location.href = '{{route('admin.product.list')}}';
+        //                 }, 2000);
+        //             }
+        //         }
+        //     });
+        // });
     </script>
 
     <script type="text/javascript">
