@@ -102,20 +102,20 @@ class CategoryController extends Controller
         $category->position = $request->position;
         $category->save();
 
-        // $data = [];
-        // foreach($request->lang as $index=>$key)
-        // {
-        //     if($request->name[$index] && $key != 'en')
-        //     {
-        //         array_push($data, Array(
-        //             'translationable_type'  => 'App\Model\Category',
-        //             'translationable_id'    => $category->id,
-        //             'locale'                => $key,
-        //             'key'                   => 'name',
-        //             'value'                 => $request->name[$index],
-        //         ));
-        //     }
-        // }
+        $data = [];
+        foreach($request->lang as $index=>$key)
+        {
+            if($request->name[$index] && $key != 'en')
+            {
+                array_push($data, Array(
+                    'translationable_type'  => 'App\Model\Category',
+                    'translationable_id'    => $category->id,
+                    'locale'                => $key,
+                    'key'                   => 'name',
+                    'value'                 => $request->name[$index],
+                ));
+            }
+        }
         if(count($data))
         {
           //  Translation::insert($data);
