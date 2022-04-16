@@ -118,7 +118,7 @@ class CategoryController extends Controller
         }
         if(count($data))
         {
-            Translation::insert($data);
+          //  Translation::insert($data);
         }
 
         return back();
