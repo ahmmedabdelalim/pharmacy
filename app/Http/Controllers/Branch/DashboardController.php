@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $earning=[];
         for ($i=1;$i<=12;$i++){
             $from = date('Y-'.$i.'-01');
-            $to = date('Y-'.$i.'-30');
+            $to = date('Y-'.$i.'-28');
             $earning[$i] = Order::where(['order_status'=>'delivered','branch_id'=>auth('branch')->id()])->whereBetween('created_at', [$from, $to])->sum('order_amount');
         }
 
