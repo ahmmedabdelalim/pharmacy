@@ -81,6 +81,9 @@
                                 </div>
 
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{route('branch.settings')}}">
+                                    <span class="text-truncate pr-2" title="Settings">{{\App\CentralLogics\translate('settings')}}</span>
+                                </a>
 
                                 <a class="dropdown-item" href="javascript:" onclick="Swal.fire({
                                     title: 'Do you want to logout?',

@@ -12,7 +12,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
     /*authentication*/
 
     Route::group(['middleware' => ['admin']], function () {
-        Route::get('/', 'DashboardController@dashboard')->name('dashboard'); 
+        Route::get('/', 'DashboardController@dashboard')->name('dashboard');
         Route::post('order-stats', 'DashboardController@order_stats')->name('order-stats');
         Route::get('settings', 'SystemController@settings')->name('settings');
         Route::post('settings', 'SystemController@settings_update');
@@ -218,7 +218,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('maintenance-mode', 'BusinessSettingsController@maintenance_mode')->name('maintenance-mode');
 
             Route::get('map-api-settings','BusinessSettingsController@map_api_setting')->name('map-api-settings');
-            Route::post('map-api-store','BusinessSettingsController@map_api_store')->name('map-api-store');
+            Route::post('map-api-store','pBusinessSettingsController@map_api_store')->name('map-api-store');
         });
 
         Route::group(['prefix' => 'report', 'as' => 'report.'], function () {

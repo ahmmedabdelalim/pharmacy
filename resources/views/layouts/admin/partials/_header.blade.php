@@ -123,7 +123,7 @@
                                     <span class="text-truncate pr-2" title="Sign out">{{\App\CentralLogics\translate('sign_out')}}</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> 
                         <!-- End Account -->
                     </li>
                 </ul>

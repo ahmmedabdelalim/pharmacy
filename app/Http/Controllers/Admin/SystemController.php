@@ -8,7 +8,7 @@ use App\Model\Admin;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB; 
 
 class SystemController extends Controller
 {

@@ -18,6 +18,10 @@ Route::group(['namespace' => 'Branch', 'as' => 'branch.'], function () {
         Route::post('order-stats', 'DashboardController@order_stats')->name('order-stats');
         Route::get('/get-restaurant-data', 'SystemController@restaurant_data')->name('get-restaurant-data');
 
+        Route::get('settings', 'SystemController@settings')->name('settings');
+        Route::post('settings', 'SystemController@settings_update');
+        Route::post('settings-password', 'SystemController@settings_password_update')->name('settings-password');
+
         Route::group(['prefix' => 'pos', 'as' => 'pos.'], function () {
             Route::get('/', 'POSController@index')->name('index');
             Route::get('quick-view', 'POSController@quick_view')->name('quick-view');
