@@ -8,6 +8,7 @@ use App\Model\Branch;
 use App\Model\Category;
 use App\Model\Order;
 use App\Model\OrderDetail;
+use App\Model\pharmacy_product;
 use App\Model\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class POSController extends Controller
 
         $products = Product::
         when($request->has('category_id') && $request['category_id'] != 0, function ($query) use ($request) {
-            $query->whereJsonContains('category_ids', [[['id' => (string)$request['category_id']]]]);
+            $query->whereJsonContains('category_id', [[['id' => (string)$request['category_id']]]]);
         })
             ->when($keyword, function ($query) use ($key) {
                 return $query->where(function ($q) use ($key) {
@@ -53,7 +54,7 @@ class POSController extends Controller
 
     public function variant_price(Request $request)
     {
-        $product = Product::find($request->id);
+        $product = pharmacy_product::find($request->id);
         $str = '';
         $quantity = 0;
         $price = 0;
@@ -157,15 +158,15 @@ class POSController extends Controller
         $price = 0;
 
         //Gets all the choice values of customer choice option and generate a string like Black-S-Cotton
-        foreach (json_decode($product->choice_options) as $key => $choice) {
-            $data[$choice->name] = $request[$choice->name];
-            $variations[$choice->title] = $request[$choice->name];
-            if ($str != null) {
-                $str .= '-' . str_replace(' ', '', $request[$choice->name]);
-            } else {
-                $str .= str_replace(' ', '', $request[$choice->name]);
-            }
-        }
+        // foreach (json_decode($product->choice_options) as $key => $choice) {
+        //     $data[$choice->name] = $request[$choice->name];
+        //     $variations[$choice->title] = $request[$choice->name];
+        //     if ($str != null) {
+        //         $str .= '-' . str_replace(' ', '', $request[$choice->name]);
+        //     } else {
+        //         $str .= str_replace(' ', '', $request[$choice->name]);
+        //     }
+        // }
         $data['variations'] = $variations;
         $data['variant'] = $str;
         if ($request->session()->has('cart')) {

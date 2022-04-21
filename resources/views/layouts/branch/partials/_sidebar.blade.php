@@ -41,7 +41,7 @@
                         <!-- End Dashboards -->
 
                         <!-- POS Section -->
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <small
                                 class="nav-subtitle">{{\App\CentralLogics\translate('pos')}} {{\App\CentralLogics\translate('system')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
@@ -72,7 +72,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!-- End POS -->
                         <li class="navbar-vertical-aside-has-menu ">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
@@ -97,22 +97,22 @@
                                         <span class="text-truncate">{{\App\CentralLogics\translate('list')}}</span>
                                     </a>
                                 </li>
-                                {{-- <li class="nav-item {{Request::is('branch/product/bulk-import')?'active':''}}">
+                                <li class="nav-item {{Request::is('branch/product/bulk-import')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.product.bulk-import')}}" title="bulk import">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{\App\CentralLogics\translate('bulk_import')}}</span>
                                     </a>
-                                </li> --}}
-                                {{-- <li class="nav-item {{Request::is('branch/product/bulk-export')?'active':''}}">
+                                </li>
+                                 <li class="nav-item {{Request::is('branch/product/bulk-export')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.product.bulk-export')}}" title="bulk export">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{\App\CentralLogics\translate('bulk_export')}}</span>
                                     </a>
-                                </li> --}}
+                                </li>
                             </ul>
                         </li>
-                        {{--  --}}
-                        <li class="nav-item">
+
+                        {{-- <li class="nav-item">
                             <small class="nav-subtitle" title="Pages">{{\App\CentralLogics\translate('order')}} {{\App\CentralLogics\translate('section')}}</small>
                             <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                         </li>
@@ -230,7 +230,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
                     </ul>

@@ -98,7 +98,7 @@ CREATE TABLE `business_settings` (
 
 --
 -- Dumping data for table `business_settings`
--- 
+--
 
 INSERT INTO `business_settings` (`id`, `key`, `value`, `created_at`, `updated_at`) VALUES
 (1, 'self_pickup', '1', '2021-01-06 05:55:51', '2021-01-06 05:55:51'),

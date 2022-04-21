@@ -46,7 +46,7 @@
         <!-- End Page Header -->
 
         <!-- Card -->
-        <div class="card card-body mb-3 mb-lg-5">
+        {{-- <div class="card card-body mb-3 mb-lg-5">
             <div class="row gx-2 gx-lg-3 mb-2">
                 <div class="col-9">
                     <h4><i style="font-size: 30px"
@@ -69,10 +69,10 @@
             <div class="row gx-2 gx-lg-3" id="order_stats">
                 @include('branch-views.partials._dashboard-order-stats',['data'=>$data])
             </div>
-        </div>
+        </div> --}}
         <!-- End Card -->
 
-        <div class="row gx-2 gx-lg-3">
+        {{-- <div class="row gx-2 gx-lg-3">
             <div class="col-lg-12 mb-3 mb-lg-12">
 
                 <!-- Card -->
@@ -169,7 +169,7 @@
                 </div>
                 <!-- End Card -->
             </div>
-        </div>
+        </div> --}}
         <!-- End Row -->
     </div>
 @endsection
@@ -185,39 +185,39 @@
     <script>
         // INITIALIZATION OF CHARTJS
         // =======================================================
-        Chart.plugins.unregister(ChartDataLabels);
+        // Chart.plugins.unregister(ChartDataLabels);
 
-        var updatingChart = $.HSCore.components.HSChartJS.init($('#updatingData'));
+        // var updatingChart = $.HSCore.components.HSChartJS.init($('#updatingData'));
 
     </script>
 
     <script>
-        function order_stats_update(type) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+    //     function order_stats_update(type) {
+    //         $.ajaxSetup({
+    //             headers: {
+    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //             }
+    //         });
 
-            $.ajax({
-                url: "{{route('branch.order-stats')}}",
-                type: "post",
-                data: {
-                    statistics_type: type,
-                },
-                beforeSend: function () {
-                    $('#loading').show()
-                },
-                success: function (data) {
-                    $('#order_stats').html(data.view)
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                },
-                complete: function () {
-                    $('#loading').hide()
-                }
-            });
-        }
+    //         $.ajax({
+    //             url: "{{route('branch.order-stats')}}",
+    //             type: "post",
+    //             data: {
+    //                 statistics_type: type,
+    //             },
+    //             beforeSend: function () {
+    //                 $('#loading').show()
+    //             },
+    //             success: function (data) {
+    //                 $('#order_stats').html(data.view)
+    //             },
+    //             error: function(jqXHR, textStatus, errorThrown) {
+    //                 console.log(textStatus, errorThrown);
+    //             },
+    //             complete: function () {
+    //                 $('#loading').hide()
+    //             }
+    //         });
+    //     }
     </script>
 @endpush
