@@ -157,7 +157,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" name="latitude" id="latitude"
-                                           value=""
+                                           value="{{auth('branch')->user()->latitude"
                                            placeholder="latitude" aria-label="latitude">
                                 </div>
                                 <br>
@@ -165,7 +165,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="email" class="form-control" name="longitude" id="longitude"
-                                           value=""
+                                           value="{{auth('branch')->user()->longitude"
                                            placeholder="longitude" aria-label="longitude">
                                 </div>
                             </div>
