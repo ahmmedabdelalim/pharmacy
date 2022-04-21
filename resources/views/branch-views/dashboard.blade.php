@@ -67,7 +67,7 @@
                 </div>
             </div>
             <div class="row gx-2 gx-lg-3" id="order_stats">
-                @include('branch-views.partials._dashboard-order-stats',['data'=>$data])
+               
             </div>
         </div> --}}
         <!-- End Card -->
@@ -183,41 +183,10 @@
 
 @push('script_2')
     <script>
-        // INITIALIZATION OF CHARTJS
-        // =======================================================
-        // Chart.plugins.unregister(ChartDataLabels);
-
-        // var updatingChart = $.HSCore.components.HSChartJS.init($('#updatingData'));
 
     </script>
 
     <script>
-    //     function order_stats_update(type) {
-    //         $.ajaxSetup({
-    //             headers: {
-    //                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //             }
-    //         });
 
-    //         $.ajax({
-    //             url: "{{route('branch.order-stats')}}",
-    //             type: "post",
-    //             data: {
-    //                 statistics_type: type,
-    //             },
-    //             beforeSend: function () {
-    //                 $('#loading').show()
-    //             },
-    //             success: function (data) {
-    //                 $('#order_stats').html(data.view)
-    //             },
-    //             error: function(jqXHR, textStatus, errorThrown) {
-    //                 console.log(textStatus, errorThrown);
-    //             },
-    //             complete: function () {
-    //                 $('#loading').hide()
-    //             }
-    //         });
-    //     }
     </script>
 @endpush
