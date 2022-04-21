@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('layouts.branch.app')
 
 @section('title','Product Preview')
 
@@ -196,7 +196,7 @@
                         <tr>
                             <td>
                                 <a class="d-flex align-items-center"
-                                   href="{{route('admin.customer.view',[$review['user_id']])}}">
+                                   href="{{route('branch.customer.view',[$review['user_id']])}}">
                                     <div class="avatar avatar-circle">
                                         <img class="avatar-img" width="75" height="75"
                                              onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"

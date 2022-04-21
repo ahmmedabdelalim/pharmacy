@@ -1,4 +1,4 @@
-@extends('layouts.admin.app')
+@extends('layouts.branch.app')
 
 @section('title','Product Bulk Import')
 
@@ -10,10 +10,10 @@
     <div class="content container-fluid">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{\App\CentralLogics\translate('dashboard')}}</a>
+                <li class="breadcrumb-item"><a href="{{route('branch.dashboard')}}">{{\App\CentralLogics\translate('dashboard')}}</a>
                 </li>
                 <li class="breadcrumb-item" aria-current="page"><a
-                        href="{{route('admin.product.list')}}">{{\App\CentralLogics\translate('product')}}</a>
+                        href="{{route('branch.product.list')}}">{{\App\CentralLogics\translate('product')}}</a>
                 </li>
                 <li class="breadcrumb-item">{{\App\CentralLogics\translate('bulk_import')}} </li>
             </ol>
@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-md-12">
-                <form class="product-form" action="{{route('admin.product.bulk-import')}}" method="POST"
+                <form class="product-form" action="{{route('branch.product.bulk-import')}}" method="POST"
                       enctype="multipart/form-data">
                     @csrf
                     <div class="card mt-2 rest-part">
@@ -55,7 +55,7 @@
                                         <input type="file" name="products_file">
                                     </div>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                     </div>
 

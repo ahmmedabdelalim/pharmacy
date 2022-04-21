@@ -25,45 +25,31 @@
                 <form action="javascript:" method="post" id="product_form"
                       enctype="multipart/form-data">
                     @csrf
-                    @php($language=\App\Model\BusinessSetting::where('key','language')->first())
-                    @php($language = $language->value ?? null)
-                    @php($default_lang = 'bn')
-                    @if($language)
-                        @php($default_lang = json_decode($language)[0])
-                        <ul class="nav nav-tabs mb-4">
 
-                            @foreach(json_decode($language) as $lang)
-                                <li class="nav-item">
-                                    <a class="nav-link lang_link {{$lang == $default_lang? 'active':''}}" href="#" id="{{$lang}}-link">{{\App\CentralLogics\Helpers::get_language_name($lang).'('.strtoupper($lang).')'}}</a>
-                                </li>
-                            @endforeach
 
-                        </ul>
-                        @foreach(json_decode($language) as $lang)
-                            <div class="card p-4 {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                                <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_name">{{\App\CentralLogics\translate('name')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == $default_lang? 'required':''}} name="name[]" id="{{$lang}}_name" class="form-control" placeholder="New Product" >
-                                </div>
-                                <input type="hidden" name="lang[]" value="{{$lang}}">
-                                 <div class="form-group pt-4">
-                                    <label class="input-label"
-                                           for="{{$lang}}_description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  ({{strtoupper($lang)}})</label>
-                                    <div id="{{$lang}}_editor" style="min-height: 15rem;"></div>
-                                    <textarea name="description[]" style="display:none" id="{{$lang}}_hiddenArea"></textarea>
-                                </div>
-                                {{--<div class="form-group pt-4">
-                                    <label class="input-label"
-                                           for="{{$lang}}_description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  ({{strtoupper($lang)}})</label>
-                                    <textarea name="description[]" style="min-height: 15rem;width:100%" id="{{$lang}}_hiddenArea"></textarea>
-                                </div>--}}
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="card p-4" id="{{$default_lang}}-form">
+
+
+
+                        <div class="card p-4" id="form">
                             <div class="form-group">
                                 <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('name')}} (EN)</label>
                                 <input type="text" name="name[]" class="form-control" placeholder="New Product" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('composition')}} (EN)</label>
+                                <input type="text" name="composition[]" class="form-control" placeholder="composition" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('indication')}} (EN)</label>
+                                <input type="text" name="indication[]" class="form-control" placeholder="indication" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('dosage')}} (EN)</label>
+                                <input type="text" name="dosage[]" class="form-control" placeholder="dosage" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('warnings')}} (EN)</label>
+                                <input type="text" name="warnings[]" class="form-control" placeholder="warnings" required>
                             </div>
                             <input type="hidden" name="lang[]" value="en">
                              <div class="form-group pt-4">
@@ -79,7 +65,7 @@
                                 <textarea name="description[]" style="min-height: 15rem;width:100%" id="hiddenArea"></textarea>
                             </div>--}}
                         </div>
-                    @endif
+
                     <div id="from_part_2">
                         <div class="row">
                             <div class="col-6">
@@ -91,7 +77,7 @@
                                            placeholder="Ex : 100" required>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            {{-- <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('unit')}}</label>
@@ -102,8 +88,8 @@
                                         <option value="pc">{{\App\CentralLogics\translate('pc')}}</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-6">
+                            </div> --}}
+                            {{-- <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('tax')}}</label>
@@ -111,8 +97,8 @@
                                            class="form-control"
                                            placeholder="Ex : 7" required>
                                 </div>
-                            </div>
-                            <div class="col-6">
+                            </div> --}}
+                            {{-- <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('tax')}} {{\App\CentralLogics\translate('type')}}</label>
@@ -121,11 +107,11 @@
                                         <option value="amount">{{\App\CentralLogics\translate('amount')}}</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="row">
-                            <div class="ol-md-4 col-4">
+                            {{-- <div class="ol-md-4 col-4">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('capacity')}}</label>
@@ -133,16 +119,16 @@
                                            class="form-control"
                                            placeholder="Ex : 5" required>
                                 </div>
-                            </div>
-                            <div class="col-md-4 col-4">
+                            </div> --}}
+                            {{-- <div class="col-md-4 col-4">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('discount')}}</label>
                                     <input type="number" min="0" max="100000" value="0" name="discount" class="form-control"
                                            placeholder="Ex : 100">
                                 </div>
-                            </div>
-                            <div class="col-md-4 col-4">
+                            </div> --}}
+                            {{-- <div class="col-md-4 col-4">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('discount')}} {{\App\CentralLogics\translate('type')}}</label>
@@ -151,7 +137,7 @@
                                         <option value="amount">{{\App\CentralLogics\translate('amount')}}</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="row">
@@ -159,7 +145,7 @@
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('stock')}}</label>
-                                    <input type="number" min="0" max="100000000" value="0" name="total_stock" class="form-control"
+                                    <input type="number" min="0" max="100000000" value="0" name="stock" class="form-control"
                                            placeholder="Ex : 100">
                                 </div>
                             </div>
@@ -177,7 +163,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-12">
+                            {{-- <div class="col-md-4 col-12">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlSelect1">{{\App\CentralLogics\translate('sub_category')}}<span
@@ -188,7 +174,7 @@
 
                                     </select>
                                 </div>
-                            </div>
+                            </div> --}}
                             {{--<div class="col-md-4 col-6">
                                 <div class="form-group">
                                     <label class="input-label" for="exampleFormControlSelect1">Sub Sub Category<span
@@ -201,7 +187,7 @@
                             </div>--}}
                         </div>
 
-                        <div class="row"
+                        {{-- <div class="row"
                              style="border: 1px solid #80808045; border-radius: 10px;padding-top: 10px;margin: 1px">
                             <div class="col-12">
                                 <div class="form-group">
@@ -228,7 +214,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label>{{\App\CentralLogics\translate('product')}} {{\App\CentralLogics\translate('image')}}</label><small
@@ -254,85 +240,42 @@
 @push('script_2')
     <script src="{{asset('public/assets/branch/js/spartan-multi-image-picker.js')}}"></script>
     <script>
-        $(".lang_link").click(function(e){
-            e.preventDefault();
-            $(".lang_link").removeClass('active');
-            $(".lang_form").addClass('d-none');
-            $(this).addClass('active');
-
-            let form_id = this.id;
-            let lang = form_id.split("-")[0];
-            console.log(lang);
-            $("#"+lang+"-form").removeClass('d-none');
-            if(lang == '{{$default_lang}}')
-            {
-                $("#from_part_2").removeClass('d-none');
-            }
-            else
-            {
-                $("#from_part_2").addClass('d-none');
-            }
 
 
-        })
+
+        // })
     </script>
 
     <script>
-        @if($language)
-        @foreach(json_decode($language) as $lang)
-        var en_quill = new Quill('#{{$lang}}_editor', {
-            theme: 'snow'
-        });
-        @endforeach
-        @else
-        var bn_quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-        @endif
 
-        $('#product_form').on('submit', function () {
-            @if($language)
-            @foreach(json_decode($language) as $lang)
-            var {{$lang}}_myEditor = document.querySelector('#{{$lang}}_editor')
-            $("#{{$lang}}_hiddenArea").val({{$lang}}_myEditor.children[0].innerHTML);
-            @endforeach
-            @else
-            var myEditor = document.querySelector('#editor')
-            $("#hiddenArea").val(myEditor.children[0].innerHTML);
-            @endif
 
-            var formData = new FormData(this);
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.post({
-                url: '{{route('branch.product.store')}}',
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data.errors) {
-                        for (var i = 0; i < data.errors.length; i++) {
-                            toastr.error(data.errors[i].message, {
-                                CloseButton: true,
-                                ProgressBar: true
-                            });
-                        }
-                    } else {
-                        toastr.success('product uploaded successfully!', {
-                            CloseButton: true,
-                            ProgressBar: true
-                        });
-                        setTimeout(function () {
-                            location.href = '{{route('branch.product.list')}}';
-                        }, 2000);
-                    }
-                }
-            });
-        });
+
+        //     $.post({
+        //         url: '{{route('branch.product.store')}}',
+        //         data: formData,
+        //         cache: false,
+        //         contentType: false,
+        //         processData: false,
+        //         success: function (data) {
+        //             if (data.errors) {
+        //                 for (var i = 0; i < data.errors.length; i++) {
+        //                     toastr.error(data.errors[i].message, {
+        //                         CloseButton: true,
+        //                         ProgressBar: true
+        //                     });
+        //                 }
+        //             } else {
+        //                 toastr.success('product uploaded successfully!', {
+        //                     CloseButton: true,
+        //                     ProgressBar: true
+        //                 });
+        //                 setTimeout(function () {
+        //                     location.href = '{{route('branch.product.list')}}';
+        //                 }, 2000);
+        //             }
+        //         }
+        //     });
+        // });
     </script>
 
     <script type="text/javascript">
@@ -403,33 +346,33 @@
             });
         });
 
-        function add_more_customer_choice_option(i, name) {
-            let n = name.split(' ').join('');
-            $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="Choice Title" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="Enter choice values" data-role="tagsinput" onchange="combination_update()"></div></div>');
-            $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
-        }
+        // function add_more_customer_choice_option(i, name) {
+        //     let n = name.split(' ').join('');
+        //     $('#customer_choice_options').append('<div class="row"><div class="col-md-3"><input type="hidden" name="choice_no[]" value="' + i + '"><input type="text" class="form-control" name="choice[]" value="' + n + '" placeholder="Choice Title" readonly></div><div class="col-lg-9"><input type="text" class="form-control" name="choice_options_' + i + '[]" placeholder="Enter choice values" data-role="tagsinput" onchange="combination_update()"></div></div>');
+        //     $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput();
+        // }
 
-        function combination_update() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+        // function combination_update() {
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
 
-            $.ajax({
-                type: "POST",
-                url: '{{route('branch.product.variant-combination')}}',
-                data: $('#product_form').serialize(),
-                success: function (data) {
-                    $('#variant_combination').html(data.view);
-                    if (data.length > 1) {
-                        $('#quantity').hide();
-                    } else {
-                        $('#quantity').show();
-                    }
-                }
-            });
-        }
+        //     $.ajax({
+        //         type: "POST",
+        //         url: '{{route('branch.product.variant-combination')}}',
+        //         data: $('#product_form').serialize(),
+        //         success: function (data) {
+        //             $('#variant_combination').html(data.view);
+        //             if (data.length > 1) {
+        //                 $('#quantity').hide();
+        //             } else {
+        //                 $('#quantity').show();
+        //             }
+        //         }
+        //     });
+        // }
     </script>
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -488,12 +431,12 @@
             }
             if(qty_elements.length > 0)
             {
-                $('input[name="total_stock"]').attr("readonly", true);
-                $('input[name="total_stock"]').val(total_qty);
+                $('input[name="stock"]').attr("readonly", true);
+                $('input[name="stock"]').val(total_qty);
                 console.log(total_qty)
             }
             else{
-                $('input[name="total_stock"]').attr("readonly", false);
+                $('input[name="stock"]').attr("readonly", false);
             }
         }
     </script>

@@ -249,7 +249,7 @@
     <script>
 
 
-         
+
         //     $.post({
         //         url: '{{route('admin.product.store')}}',
         //         data: formData,
@@ -376,7 +376,7 @@
     </script>
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
+ 
     <script>
         var quill = new Quill('#editor', {
             theme: 'snow'

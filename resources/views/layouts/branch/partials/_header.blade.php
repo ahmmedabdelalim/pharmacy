@@ -5,7 +5,7 @@
             <div class="navbar-brand-wrapper">
                 <!-- Logo -->
                 @php($restaurant_logo=\App\Model\BusinessSetting::where(['key'=>'logo'])->first()->value)
-                <a class="navbar-brand" href="{{route('admin.dashboard')}}" aria-label="">
+                <a class="navbar-brand" href="{{route('branch.dashboard')}}" aria-label="">
                     <img class="navbar-brand-logo"
                          onerror="this.src='{{asset('public/assets/admin/img/160x160/img1.jpg')}}'"
                          src="{{asset('storage/app/public/restaurant/'.$restaurant_logo)}}" alt="Logo">
