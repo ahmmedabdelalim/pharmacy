@@ -14,5 +14,6 @@ class Branch extends Authenticatable
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'products_file'=>'file',
+        'image'=>'file'
     ];
 }

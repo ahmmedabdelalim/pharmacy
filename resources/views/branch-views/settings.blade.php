@@ -119,12 +119,10 @@
 
                                 <div class="col-sm-9">
                                     <div class="input-group input-group-sm-down-break">
-                                        <input type="text" class="form-control" name="f_name" id="firstNameLabel"
+                                        <input type="text" class="form-control" name="name" id="name"
                                                placeholder="Your first name" aria-label="Your first name"
-                                               value="{{auth('branch')->user()->f_name}}">
-                                        <input type="text" class="form-control" name="l_name" id="lastNameLabel"
-                                               placeholder="Your last name" aria-label="Your last name"
-                                               value="{{auth('branch')->user()->l_name}}">
+                                               value="{{auth('branch')->user()->name}}">
+
                                     </div>
                                 </div>
                             </div>
