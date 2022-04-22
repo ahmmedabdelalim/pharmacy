@@ -4,7 +4,7 @@
 
 @push('css_or_js')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{asset('public/assets/branch/css/tags-input.min.css')}}" rel="stylesheet">
+    <link href="{{asset('public/assets/admin/css/tags-input.min.css')}}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -170,7 +170,7 @@
                                             class="input-label-secondary"></span></label>
                                     <select name="sub_category_id" id="sub-categories"
                                             class="form-control js-select2-custom"
-                                            onchange="getRequest('{{url('/')}}/branch/product/get-categories?parent_id='+this.value,'sub-sub-categories')">
+                                            onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-sub-categories')">
 
                                     </select>
                                 </div>
@@ -238,7 +238,7 @@
 @endpush
 
 @push('script_2')
-    <script src="{{asset('public/assets/branch/js/spartan-multi-image-picker.js')}}"></script>
+    <script src="{{asset('public/assets/admin/js/spartan-multi-image-picker.js')}}"></script>
     <script>
 
 
@@ -251,7 +251,7 @@
 
 
         //     $.post({
-        //         url: '{{route('branch.product.store')}}',
+        //         url: '{{route('admin.product.store')}}',
         //         data: formData,
         //         cache: false,
         //         contentType: false,
@@ -270,7 +270,7 @@
         //                     ProgressBar: true
         //                 });
         //                 setTimeout(function () {
-        //                     location.href = '{{route('branch.product.list')}}';
+        //                     location.href = '{{route('admin.product.list')}}';
         //                 }, 2000);
         //             }
         //         }
@@ -287,7 +287,7 @@
                 groupClassName: 'col-3',
                 maxFileSize: '',
                 placeholderImage: {
-                    image: '{{asset('public/assets/branch/img/400x400/img2.jpg')}}',
+                    image: '{{asset('public/assets/admin/img/400x400/img2.jpg')}}',
                     width: '100%'
                 },
                 dropFileLabel: "Drop Here",
@@ -336,7 +336,7 @@
         });
     </script>
 
-    <script src="{{asset('public/assets/branch')}}/js/tags-input.min.js"></script>
+    <script src="{{asset('public/assets/admin')}}/js/tags-input.min.js"></script>
 
     <script>
         $('#choice_attributes').on('change', function () {
@@ -361,7 +361,7 @@
 
         //     $.ajax({
         //         type: "POST",
-        //         url: '{{route('branch.product.variant-combination')}}',
+        //         url: '{{route('admin.product.variant-combination')}}',
         //         data: $('#product_form').serialize(),
         //         success: function (data) {
         //             $('#variant_combination').html(data.view);

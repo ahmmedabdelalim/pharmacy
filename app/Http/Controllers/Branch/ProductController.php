@@ -151,15 +151,10 @@ class ProductController extends Controller
         //     $validator->getMessageBag()->add('unit_price', 'Discount can not be more or equal to the price!');
         // }
 
-        $img_names = [];
-        if (!empty($request->file('images'))) {
-            foreach ($request->images as $img) {
-                $image_data = Helpers::upload('product/', 'png', $img);
-                array_push($img_names, $image_data);
-            }
-            $image_data = json_encode($img_names);
+        if (!empty($request->file('image'))) {
+            $image_name =  Helpers::upload('category/', 'png', $request->file('image'));
         } else {
-            $image_data = json_encode([]);
+            $image_name = 'def.png';
         }
 
         $p = new pharmacy_product();
@@ -255,7 +250,7 @@ class ProductController extends Controller
         // $p->variations = json_encode($variations);
         $p->price = $request->price;
        // $p->unit = $request->unit;
-        $p->image = $image_data;
+        $p->image = $image_name;
         // $p->capacity = $request->capacity;
         // $p->set_menu = $request->item_type;
 
