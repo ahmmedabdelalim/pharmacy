@@ -41,6 +41,20 @@ Route::group(['namespace' => 'Branch', 'as' => 'branch.'], function () {
             Route::any('store-keys', 'POSController@store_keys')->name('store-keys');
         });
 
+        Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
+            Route::get('add', 'CategoryController@index')->name('add');
+            Route::get('add-sub-category', 'CategoryController@sub_index')->name('add-sub-category');
+            Route::get('add-sub-sub-category', 'CategoryController@sub_sub_index')->name('add-sub-sub-category');
+            Route::post('store', 'CategoryController@store')->name('store');
+            Route::get('edit/{id}', 'CategoryController@edit')->name('edit');
+            Route::post('update/{id}', 'CategoryController@update')->name('update');
+            Route::post('store', 'CategoryController@store')->name('store');
+            Route::get('status/{id}/{status}', 'CategoryController@status')->name('status');
+            Route::delete('delete/{id}', 'CategoryController@delete')->name('delete');
+            Route::post('search', 'CategoryController@search')->name('search');
+        });
+
+
         Route::group(['prefix' => 'orders', 'as' => 'orders.'], function () {
             Route::get('list/{status}', 'OrderController@list')->name('list');
             Route::get('details/{id}', 'OrderController@details')->name('details');

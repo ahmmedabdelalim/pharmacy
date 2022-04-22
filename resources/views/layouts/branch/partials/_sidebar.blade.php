@@ -72,8 +72,46 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> 
+                        </li>
                         <!-- End POS -->
+                        {{-- start of category  --}}
+
+                        <li class="navbar-vertical-aside-has-menu {{Request::is('branch/category*')?'active':''}}">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
+                            >
+                                <i class="tio-category nav-icon"></i>
+                                <span
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CentralLogics\translate('category')}}</span>
+                            </a>
+                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                style="display: {{Request::is('branch/category*')?'block':'none'}}">
+                                <li class="nav-item {{Request::is('branch/category/add')?'active':''}}">
+                                    <a class="nav-link " href="{{route('branch.category.add')}}"
+                                       title="add new category">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">{{\App\CentralLogics\translate('category')}}</span>
+                                    </a>
+                                </li>
+
+                                {{-- <li class="nav-item {{Request::is('branch/category/add-sub-category')?'active':''}}">
+                                    <a class="nav-link " href="{{route('branch.category.add-sub-category')}}"
+                                       title="add new sub category">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">{{\App\CentralLogics\translate('sub_category')}}</span>
+                                    </a>
+                                </li> --}}
+
+                                {{--<li class="nav-item {{Request::is('branch/category/add-sub-sub-category')?'active':''}}">
+                                    <a class="nav-link " href="{{route('branch.category.add-sub-sub-category')}}"
+                                       title="add new sub sub category">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">Sub-Sub-Category</span>
+                                    </a>
+                                </li>--}}
+                            </ul>
+                        </li>
+
+                        {{-- end of category --}}
                         <li class="navbar-vertical-aside-has-menu ">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
                             >
