@@ -61,4 +61,18 @@ class SystemController extends Controller
         return back();
     }
 
+    public function settings_password_update(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|same:confirm_password|min:8',
+            'confirm_password' => 'required',
+        ]);
+
+        $admin = Branch::find(auth('admin')->id());
+        $admin->password = bcrypt($request['password']);
+        $admin->save();
+        Toastr::success('Admin password updated successfully!');
+        return back();
+    }
+
 }
