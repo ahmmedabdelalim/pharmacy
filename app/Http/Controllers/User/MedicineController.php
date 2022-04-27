@@ -121,16 +121,16 @@ class MedicineController extends Controller
 
 
     try{
-        // $request->latitude;
+        dd($request->startlat);
         // $request->longitude;
             $query = DB::select("SELECT
             * FROM ( SELECT name , phone ,latitude,longitude,
     
-            ((( ACOS( SIN((   $request->latitude::FLOAT * PI() / 180)) * SIN(
+            ((( ACOS( SIN((   $request->startlat * PI() / 180)) * SIN(
             
-            (latitude::FLOAT * PI() / 180)) + COS((  $request->latitude::FLOAT * PI() / 180)) * COS(
+            (latitude::FLOAT * PI() / 180)) + COS((  $request->startlat * PI() / 180)) * COS(
     
-            (latitude::FLOAT * PI() / 180)) * COS( ( (  $request->longitude::FLOAT - longitude::FLOAT ) * PI() / 180)  )  ) ) *
+            (latitude::FLOAT * PI() / 180)) * COS( ( (  $request->startlng - longitude::FLOAT ) * PI() / 180)  )  ) ) *
             
             180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
             FROM branches ) branches WHERE distance <= 20 LIMIT 5 ");
