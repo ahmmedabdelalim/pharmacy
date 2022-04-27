@@ -225,6 +225,7 @@ class UserAuthController extends Controller
             $user->temporary_token = Str::random(40);
             $user->save();
             $data = [
+                
                 'email' => $user->email,
                 'password' => $request->password
             ];
@@ -236,7 +237,9 @@ class UserAuthController extends Controller
         $data['code']    = 200;
         $data['message'] = 'success';
         $data['error']   = NULL;
-        $data['data']    = $token;
+        $data['data']['name']    = auth()->user()->f_name;
+        $data['data']['token']    = $token;
+       
         return json_encode($data);
             }
         }
