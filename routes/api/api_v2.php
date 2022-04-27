@@ -20,4 +20,5 @@ Route::get('/user/categories', [MedicineController::class,'categories']);
 Route::get('/user/product_by_cat', [MedicineController::class,'product_by_cat']);
 Route::get('/user/search', [MedicineController::class,'search']);
 Route::get('/user/product_detail', [MedicineController::class,'product_detail']);
+Route::get('/user/closest_location', [MedicineController::class,'closest_location']);
 ?>

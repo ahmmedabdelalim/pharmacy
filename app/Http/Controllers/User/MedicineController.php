@@ -8,7 +8,7 @@ use App\Model\Product;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use App\CentralLogics\Helpers;
-
+use Illuminate\Support\Facades\DB;
 
 class MedicineController extends Controller
 {
@@ -112,5 +112,44 @@ class MedicineController extends Controller
         $data['error']   = NULL;
         $data['data']    = $product;
         return json_encode($data);
+    }
+
+    /// get nearest location
+
+    public function closest_location(Request $request)
+    {
+
+
+    try{
+            $query = DB::select("SELECT
+        * FROM ( SELECT name , phone ,latitude,longitude,
+
+        ((( ACOS( SIN((  $request->startlat * PI() / 180)) * SIN(
+
+        (`latitude` * PI() / 180)) + COS(( $request->startlat * PI() / 180)) * COS(
+
+        (`latitude` * PI() / 180)) * COS( ( (  $request->startlng - `longitude`) * PI() / 180)  )  ) ) * 180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
+        FROM `branches` ) branches WHERE distance <= 2 LIMIT 5 ");
+
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $query;
+        return json_encode($data);
+    }
+
+    catch(\Exception $ex)
+    {
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $ex;
+        return json_encode($data);
+    }
+
+
+
+
+
     }
 }
