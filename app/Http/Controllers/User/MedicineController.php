@@ -126,10 +126,10 @@ class MedicineController extends Controller
 
         ((( ACOS( SIN((  $request->startlat * PI() / 180)) * SIN(
 
-        (`latitude` * PI() / 180)) + COS(( $request->startlat * PI() / 180)) * COS(
+        (latitude * PI() / 180)) + COS(( $request->startlat * PI() / 180)) * COS(
 
-        (`latitude` * PI() / 180)) * COS( ( (  $request->startlng - `longitude`) * PI() / 180)  )  ) ) * 180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
-        FROM `branches` ) branches WHERE distance <= 2 LIMIT 5 ");
+        (latitude * PI() / 180)) * COS( ( (  $request->startlng - longitude) * PI() / 180)  )  ) ) * 180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
+        FROM branches ) branches WHERE distance <= 2 LIMIT 5 ");
 
         $data['code']    = 200;
         $data['message'] = 'success';
