@@ -179,6 +179,8 @@ class UserAuthController extends Controller
         $data['code']    = 200;
         $data['message'] = 'success';
         $data['error']   = NULL;
+        $data['data']['f_name']    = $user->f_name;
+        $data['data']['l_name']    =$user->l_name;
         $data['data']    = $token;
         return json_encode($data);
     }
@@ -237,7 +239,8 @@ class UserAuthController extends Controller
         $data['code']    = 200;
         $data['message'] = 'success';
         $data['error']   = NULL;
-        $data['data']['name']    = auth()->user()->f_name;
+        $data['data']['f_name']    = auth()->user()->f_name;
+        $data['data']['l_name']    = auth()->user()->l_name;
         $data['data']['token']    = $token;
        
         return json_encode($data);
