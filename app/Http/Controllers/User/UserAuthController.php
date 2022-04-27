@@ -172,7 +172,7 @@ class UserAuthController extends Controller
         // if ($email_verification && !$user->is_email_verified) {
         //     return response()->json(['temporary_token' => $temporary_token], 200);
         // }
-
+ 
         $token = $user->createToken('RestaurantCustomerAuth')->accessToken;
 
         // dd($token);

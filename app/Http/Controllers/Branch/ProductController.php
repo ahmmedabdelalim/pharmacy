@@ -585,7 +585,7 @@ class ProductController extends Controller
                 // 'tax' => $collection['tax'],
                 'status' => 1,
                 // 'attributes' => json_encode([]),
-                'category_id' => json_encode([['id' => $collection['category_id'], 'position' => 0],  'position' => 1]),
+                'category_id' =>  $collection['category_id'],
                 // 'choice_options' => json_encode([]),
                 // 'discount' => $collection['discount'],
                 // 'discount_type' => $collection['discount_type'],

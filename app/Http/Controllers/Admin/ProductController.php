@@ -151,14 +151,15 @@ class ProductController extends Controller
         $p->indication = $request->indication[array_search('en', $request->lang)];
         $p->dosage = $request->dosage[array_search('en', $request->lang)];
         $p->warnings = $request->warnings[array_search('en', $request->lang)];
+        $p->category_id = $request->category_id;
 
-        $category = [];
-        if ($request->category_id != null) {
-            array_push($category, [
-                'id' => $request->category_id,
-                'position' => 1,
-            ]);
-        }
+        // $category = [];
+        // if ($request->category_id != null) {
+        //     array_push($category, [
+        //         'id' => $request->category_id,
+        //         'position' => 1,
+        //     ]);
+        // }
         // if ($request->sub_category_id != null) {
         //     array_push($category, [
         //         'id' => $request->sub_category_id,
@@ -172,7 +173,7 @@ class ProductController extends Controller
         //     ]);
         // }
 
-        $p->category_id = json_encode($category);
+        // $p->category_id = json_encode($category);
         $p->description = $request->description[array_search('en', $request->lang)];
 
         // $choice_options = [];
@@ -345,27 +346,27 @@ class ProductController extends Controller
 
         $p->name = $request->name[array_search('en', $request->lang)];
 
-        $category = [];
-        if ($request->category_id != null) {
-            array_push($category, [
-                'id' => $request->category_id,
-                'position' => 1,
-            ]);
-        }
-        if ($request->sub_category_id != null) {
-            array_push($category, [
-                'id' => $request->sub_category_id,
-                'position' => 2,
-            ]);
-        }
-        if ($request->sub_sub_category_id != null) {
-            array_push($category, [
-                'id' => $request->sub_sub_category_id,
-                'position' => 3,
-            ]);
-        }
+        // $category = [];
+        // if ($request->category_id != null) {
+        //     array_push($category, [
+        //         'id' => $request->category_id,
+        //         'position' => 1,
+        //     ]);
+        // }
+        // if ($request->sub_category_id != null) {
+        //     array_push($category, [
+        //         'id' => $request->sub_category_id,
+        //         'position' => 2,
+        //     ]);
+        // }
+        // if ($request->sub_sub_category_id != null) {
+        //     array_push($category, [
+        //         'id' => $request->sub_sub_category_id,
+        //         'position' => 3,
+        //     ]);
+        // }
 
-        $p->category_ids = json_encode($category);
+        $p->category_id = $request->category_id;
         $p->description = $request->description[array_search('en', $request->lang)];
 
         $choice_options = [];
@@ -537,85 +538,52 @@ class ProductController extends Controller
             } elseif (!is_numeric($collection['price'])) {
                 Toastr::error('Price of row ' . ($key + 2) . ' must be number');
                 return back();
-            } elseif (!is_numeric($collection['tax'])) {
-                Toastr::error('Tax of row ' . ($key + 2) . ' must be number');
-                return back();
             } elseif ($collection['price'] === "") {
                 Toastr::error('Please fill row:' . ($key + 2) . ' field: price ');
                 return back();
             } elseif ($collection['category_id'] === "") {
                 Toastr::error('Please fill row:' . ($key + 2) . ' field: category_id ');
                 return back();
-            } elseif ($collection['sub_category_id'] === "") {
-                Toastr::error('Please fill row:' . ($key + 2) . ' field: sub_category_id ');
-                return back();
-            } elseif (!is_numeric($collection['discount'])) {
-                Toastr::error('Discount of row ' . ($key + 2) . ' must be number');
-                return back();
-            } elseif ($collection['discount'] === "") {
-                Toastr::error('Please fill row:' . ($key + 2) . ' field: discount ');
-                return back();
-            } elseif ($collection['discount_type'] === "") {
-                Toastr::error('Please fill row:' . ($key + 2) . ' field: discount_type ');
-                return back();
-            } elseif ($collection['tax_type'] === "") {
-                Toastr::error('Please fill row:' . ($key + 2) . ' field: tax_type ');
-                return back();
-            } elseif ($collection['unit'] === "") {
-                Toastr::error('Please fill row:' . ($key + 2) . ' field: unit ');
-                return back();
-            } elseif (!is_numeric($collection['total_stock'])) {
+            }  elseif (!is_numeric($collection['stock'])) {
                 Toastr::error('Total Stock of row ' . ($key + 2) . ' must be number');
                 return back();
-            } elseif ($collection['total_stock'] === "") {
+            } elseif ($collection['stock'] === "") {
                 Toastr::error('Please fill row:' . ($key + 2) . ' field: total_stock ');
-                return back();
-            } elseif (!is_numeric($collection['capacity'])) {
-                Toastr::error('Capacity of row ' . ($key + 2) . ' must be number');
-                return back();
-            } elseif ($collection['capacity'] === "") {
-                Toastr::error('Please fill row:' . ($key + 2) . ' field: capacity ');
-                return back();
-            } elseif (!is_numeric($collection['daily_needs'])) {
-                Toastr::error('Daily Needs of row ' . ($key + 2) . ' must be number');
-                return back();
-            } elseif ($collection['daily_needs'] === "") {
-                Toastr::error('Please fill row:' . ($key + 2) . ' field: daily_needs ');
                 return back();
             }
 
-            $product = [
-                'discount_type' => $collection['discount_type'],
-                'discount' => $collection['discount'],
-            ];
-            if ($collection['price'] <= Helpers::discount_calculate($product, $collection['price'])) {
-                Toastr::error('Discount can not be more or equal to the price in row '. ($key + 2));
-                return back();
-            }
+
+
         }
         $data = [];
+        // dd(auth()->guard('branch')->user()->id);
         foreach ($collections as $collection) {
 
             array_push($data, [
                 'name' => $collection['name'],
+                // 'pharmacy_id'=>auth()->guard('branch')->user()->id,
                 'description' => $collection['description'],
+                'composition' => $collection['composition'],
+                'indication' => $collection['indication'],
+                'dosage' => $collection['dosage'],
+                'warnings' => $collection['warnings'],
                 'image' => json_encode(['def.png']),
                 'price' => $collection['price'],
-                'variations' => json_encode([]), 
-                'tax' => $collection['tax'],
+                // 'variations' => json_encode([]),
+                // 'tax' => $collection['tax'],
                 'status' => 1,
-                'attributes' => json_encode([]),
-                'category_ids' => json_encode([['id' => $collection['category_id'], 'position' => 0], ['id' => $collection['sub_category_id'], 'position' => 1]]),
-                'choice_options' => json_encode([]),
-                'discount' => $collection['discount'],
-                'discount_type' => $collection['discount_type'],
-                'tax_type' => $collection['tax_type'],
-                'unit' => $collection['unit'],
-                'total_stock' => $collection['total_stock'],
-                'capacity' => $collection['capacity'],
-                'daily_needs' => $collection['daily_needs'],
+                // 'attributes' => json_encode([]),
+                'category_id' =>  $collection['category_id'],
+                // 'choice_options' => json_encode([]),
+                // 'discount' => $collection['discount'],
+                // 'discount_type' => $collection['discount_type'],
+                // 'tax_type' => $collection['tax_type'],
+                // 'unit' => $collection['unit'],
+                'stock' => $collection['stock'],
+                // 'capacity' => $collection['capacity'],
+                // 'daily_needs' => $collection['daily_needs'],
             ]);
-        }
+        } 
         DB::table('products')->insert($data);
         Toastr::success(count($data) . ' - Products imported successfully!');
         return back();
