@@ -121,15 +121,17 @@ class MedicineController extends Controller
 
 
     try{
-            $query = DB::select("SELECT
-        * FROM ( SELECT name , phone ,latitude,longitude,
-
-        ((( ACOS( SIN((  $request->startlat * PI() / 180)) * SIN(
-
-        (latitude * PI() / 180)) + COS(( $request->startlat * PI() / 180)) * COS(
-
-        (latitude * PI() / 180)) * COS( ( (  $request->startlng - longitude) * PI() / 180)  )  ) ) * 180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
-        FROM branches ) branches WHERE distance <= 2 LIMIT 5 ");
+            $query = DB::select(" SELECT
+            * FROM ( SELECT name , phone ,latitude,longitude,
+    
+            ((( ACOS( SIN((  30.383523563752128 * PI() / 180)) * SIN(
+    
+            (TO_NUMBER(latitude, '99G999D9S') * PI() / 180)) + COS(( 30.383523563752128 * PI() / 180)) * COS(
+    
+            (TO_NUMBER(latitude, '99G999D9S') * PI() / 180)) * COS( ( (  30.539858069452958 - TO_NUMBER(longitude, 
+            
+            '99G999D9S') ) * PI() / 180)  )  ) ) * 180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
+            FROM branches ) branches WHERE distance <= 2 LIMIT 5 ");
 
         $data['code']    = 200;
         $data['message'] = 'success';
