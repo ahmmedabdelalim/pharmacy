@@ -121,7 +121,7 @@ class MedicineController extends Controller
 
 
     try{
-        dd($request->startlat);
+        // dd($request->startlat);
         // $request->longitude;
             $query = DB::select("SELECT
             * FROM ( SELECT name , phone ,latitude,longitude,
