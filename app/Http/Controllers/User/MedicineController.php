@@ -106,13 +106,9 @@ class MedicineController extends Controller
 
     public function product_detail(Request $request)
     {
-        // $product = Product::where('id' , $request->product_id)->get();
-        $product = DB::select("  SELECT products.id AS product_id ,
-        products.name AS product_name,
-        products.description AS product_desc,
-        products.warnings AS product_warninig,
-        products.dosage AS product_dosage ,
-        products.indication AS product_indication,
+        $product = Product::where('id' , $request->product_id)->get();
+        $pharmacy_product = DB::select("  SELECT products.id AS product_id ,
+
         pharmacy_product.product_id AS pharmacy_product_id,
         branches.id AS branche_id ,
         branches.name AS branche_name,
@@ -141,7 +137,8 @@ class MedicineController extends Controller
         $data['code']    = 200;
         $data['message'] = 'success';
         $data['error']   = NULL;
-        $data['data']    = $product;
+        $data['data']['product_details']    = $product;
+        $data['data']['pharmacy']    = $pharmacy_product;
         return json_encode($data);
     }
 
