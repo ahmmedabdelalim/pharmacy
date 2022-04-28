@@ -107,8 +107,7 @@ class MedicineController extends Controller
     public function product_detail(Request $request)
     {
         // $product = Product::where('id' , $request->product_id)->get();
-        $product = DB::select("
-        SELECT products.id AS product_id ,
+        $product = DB::select("  SELECT products.id AS product_id ,
         products.name AS product_name,
         products.description AS product_desc,
         products.warnings AS product_warninig,
