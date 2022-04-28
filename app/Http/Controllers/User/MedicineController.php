@@ -106,7 +106,39 @@ class MedicineController extends Controller
 
     public function product_detail(Request $request)
     {
-        $product = Product::where('id' , $request->product_id)->get();
+        // $product = Product::where('id' , $request->product_id)->get();
+        $product = DB::select("
+        SELECT products.id AS product_id ,
+        products.name AS product_name,
+        products.description AS product_desc,
+        products.warnings AS product_warninig,
+        products.dosage AS product_dosage ,
+        products.indication AS product_indication,
+        pharmacy_product.product_id AS pharmacy_product_id,
+        branches.id AS branche_id ,
+        branches.name AS branche_name,
+        branches.phone AS branche_phone,
+
+                ((( ACOS( SIN((  $request->startlat * PI() / 180)) * SIN(
+
+                (branches.latitude::FLOAT * PI() / 180)) + COS(( $request->startlat * PI() / 180)) * COS(
+
+                (branches.latitude::FLOAT * PI() / 180)) * COS( ( (  $request->startlng - branches.longitude::FLOAT ) * PI() / 180)  )  ) ) *
+
+                180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
+
+                FROM products
+                INNER JOIN pharmacy_product
+                ON products.id = pharmacy_product.product_id
+
+                INNER JOIN branches
+                ON branches.id = pharmacy_product.pharmacy_id
+
+
+                products.id = $request->product_id AND pharmacy_product.stock > 0 LIMIT 5
+
+
+        ");
         $data['code']    = 200;
         $data['message'] = 'success';
         $data['error']   = NULL;
@@ -125,13 +157,13 @@ class MedicineController extends Controller
         // $request->longitude;
             $query = DB::select("SELECT
             * FROM ( SELECT name , id ,phone ,latitude,longitude,
-    
+
             ((( ACOS( SIN((   $request->startlat * PI() / 180)) * SIN(
-            
+
             (latitude::FLOAT * PI() / 180)) + COS((  $request->startlat * PI() / 180)) * COS(
-    
+
             (latitude::FLOAT * PI() / 180)) * COS( ( (  $request->startlng - longitude::FLOAT ) * PI() / 180)  )  ) ) *
-            
+
             180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
             FROM branches ) branches WHERE distance <= 20 LIMIT 5 ");
 
