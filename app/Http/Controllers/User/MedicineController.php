@@ -134,7 +134,7 @@ class MedicineController extends Controller
                 ON branches.id = pharmacy_product.pharmacy_id
 
 
-                products.id = $request->product_id AND pharmacy_product.stock > 0 LIMIT 5
+                WHERE products.id = $request->product_id AND pharmacy_product.stock > 0 LIMIT 5
 
 
         ");
