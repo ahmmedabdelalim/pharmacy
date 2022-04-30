@@ -270,9 +270,17 @@ class UserAuthController extends Controller
             'f_name.required' => 'First name is required!',
         ]);
 
-        $user  = User::find($request->user_id);
+        $user  = User::find(@$request->user_id);
         // dd($user);
 
+        if (!$user)
+        {
+        $data['code']    = 404;
+        $data['message'] = 'user not found';
+        return json_encode($data);
+
+        }
+        else{
         if ($request->has('image')) {
             $image_name =Helpers::update('admin/', $user->image, 'png', $request->file('image'));
         } else {
@@ -292,18 +300,24 @@ class UserAuthController extends Controller
         $data['error']   = NULL;
 
         return json_encode($data);
+        }
     }
 
 
     public function settings_password_update(Request $request)
     {
-        // $request->validate([
-        //     'password' => 'required|same:confirm_password|min:8'
-
-        // ]);
 
         $user = User::find($request->user_id);
-        $user->password = bcrypt($request['password']);
+
+        if(!$user)
+        {
+            $data['code']    = 404;
+            $data['message'] = 'user not found';
+            return json_encode($data);
+        }
+        else
+       {
+            $user->password = bcrypt($request['password']);
         $user->save();
         Toastr::success('Admin password updated successfully!');
 
@@ -312,6 +326,7 @@ class UserAuthController extends Controller
         $data['error']   = NULL;
 
         return json_encode($data);
+        }
     }
 
 
