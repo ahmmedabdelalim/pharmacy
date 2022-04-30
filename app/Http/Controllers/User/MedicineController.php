@@ -198,7 +198,7 @@ class MedicineController extends Controller
         if(!$pharmacy)
         {
             $data['code']    = 404;
-            $data['message'] = 'user not found';
+            $data['message'] = 'pharmacy not found';
             return json_encode($data);
 
         }
