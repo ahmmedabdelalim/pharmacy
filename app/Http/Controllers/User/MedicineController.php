@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 class MedicineController extends Controller
 {
+
 //     public function categories()
 //     {
 //         try {
@@ -57,12 +58,12 @@ class MedicineController extends Controller
         return json_encode($data);
     }
 
-    public function products()
-    {
-        $products = Product::search()->get();
-        return responseJson(1, 'success', $products);
+    // public function products()
+    // {
+    //     $products = Product::search()->get();
+    //     return responseJson(1, 'success', $products);
 
-    }
+    // }
 
 
     public function product_by_cat(Request $request)
@@ -166,7 +167,7 @@ class MedicineController extends Controller
             (latitude::FLOAT * PI() / 180)) * COS( ( (  $request->startlng - longitude::FLOAT ) * PI() / 180)  )  ) ) *
 
             180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
-            FROM branches ) branches WHERE distance <= 20 LIMIT 5 ");
+            FROM branches ) branches WHERE distance <= 300 LIMIT 5 ");
 
         $data['code']    = 200;
         $data['message'] = 'success';
