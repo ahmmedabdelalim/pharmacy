@@ -167,7 +167,7 @@ class MedicineController extends Controller
             (latitude::FLOAT * PI() / 180)) * COS( ( (  $request->startlng - longitude::FLOAT ) * PI() / 180)  )  ) ) *
 
             180 / PI()) * 60 * 1.1515 * 1.609344) AS distance
-            FROM branches ) branches WHERE distance <= 300 LIMIT 5 ");
+            FROM branches ) branches WHERE distance <= 200 LIMIT 5 ");
 
         $data['code']    = 200;
         $data['message'] = 'success';
