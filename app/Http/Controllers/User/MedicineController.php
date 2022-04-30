@@ -8,6 +8,7 @@ use App\Model\Product;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use App\CentralLogics\Helpers;
+use App\Model\Branch;
 use Illuminate\Support\Facades\DB;
 
 class MedicineController extends Controller
@@ -156,7 +157,7 @@ class MedicineController extends Controller
         // dd($request->startlat);
         // $request->longitude;
             $query = DB::select("SELECT
-            * FROM ( SELECT name , id ,phone ,latitude,longitude,
+            * FROM ( SELECT name , id ,phone ,email, address  ,latitude,longitude,
 
             ((( ACOS( SIN((   $request->startlat * PI() / 180)) * SIN(
 
@@ -183,9 +184,30 @@ class MedicineController extends Controller
         return json_encode($data);
     }
 
+    }
 
+    public function search_about_pharmacy(Request $request)
+    {
+        $key = explode(' ', $request['search']);
+        $pharmacy = Branch::where(function ($q) use ($key) {
+            foreach ($key as $value) {
+                $q->orWhere('name', 'like', "%{$value}%");
+            }
+        })->get();
 
+        if(!$pharmacy)
+        {
+            $data['code']    = 404;
+            $data['message'] = 'user not found';
+            return json_encode($data);
 
-
+        }
+        else{
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $pharmacy;
+        return json_encode($data);
+        }
     }
 }
