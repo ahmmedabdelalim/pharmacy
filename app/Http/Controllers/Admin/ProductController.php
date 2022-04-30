@@ -579,11 +579,11 @@ class ProductController extends Controller
                 // 'discount_type' => $collection['discount_type'],
                 // 'tax_type' => $collection['tax_type'],
                 // 'unit' => $collection['unit'],
-                'stock' => $collection['stock'],
+                //'stock' => $collection['stock'],
                 // 'capacity' => $collection['capacity'],
                 // 'daily_needs' => $collection['daily_needs'],
             ]);
-        } 
+        }
         DB::table('products')->insert($data);
         Toastr::success(count($data) . ' - Products imported successfully!');
         return back();

@@ -11,6 +11,8 @@ Route::get('/user/product', [MedicineController::class,'products']);
 Route::group(['prefix' => 'auth'], function () {
     Route::post('signup', [UserAuthController::class,'registration']);
     Route::post('login',[UserAuthController::class,'login'] );
+    Route::post('settings_update',[UserAuthController::class,'settings_update'] );
+    Route::post('settings_password_update',[UserAuthController::class,'settings_password_update'] );
 
 
 });

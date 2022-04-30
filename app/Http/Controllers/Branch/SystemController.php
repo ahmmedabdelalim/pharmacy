@@ -52,10 +52,10 @@ class SystemController extends Controller
         $branch->name = $request->name;
 
         $branch->email = $request->email;
-        $branch->latitude = $request->latitude;
-        $branch->longitude = $request->longitude;
-        $branch->phone = $request->phone;
-        $branch->image = $image_name;
+        $branch->latitude = @$request->latitude;
+        $branch->longitude = @$request->longitude;
+        $branch->phone = @$request->phone;
+        $branch->image = @$image_name;
         $branch->save();
         Toastr::success('Admin updated successfully!');
         return back();

@@ -113,6 +113,10 @@ class MedicineController extends Controller
         branches.id AS branche_id ,
         branches.name AS branche_name,
         branches.phone AS branche_phone,
+        branches.email AS branche_email,
+        branches.address AS branche_address,
+        branches.latitude AS branche_latitude,
+        branches.longitude AS branche_longitude,
 
                 ((( ACOS( SIN((  $request->startlat * PI() / 180)) * SIN(
 

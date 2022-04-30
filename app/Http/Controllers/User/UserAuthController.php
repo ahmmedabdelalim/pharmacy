@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Brian2694\Toastr\Facades\Toastr;
+
 
 
 class UserAuthController extends Controller
@@ -135,7 +137,7 @@ class UserAuthController extends Controller
 
 
     public function registration(Request $request)
-{
+    {
         // dd(2);
         try
 
@@ -172,7 +174,7 @@ class UserAuthController extends Controller
         // if ($email_verification && !$user->is_email_verified) {
         //     return response()->json(['temporary_token' => $temporary_token], 200);
         // }
- 
+
         $token = $user->createToken('RestaurantCustomerAuth')->accessToken;
 
         // dd($token);
@@ -192,8 +194,8 @@ class UserAuthController extends Controller
        // return response()->json(['token' => $token], 200);
  }
 
- public function login(Request $request)
-    {
+     public function login(Request $request)
+        {
 
         if($request->has('email_or_phone'))
         {
@@ -227,7 +229,7 @@ class UserAuthController extends Controller
             $user->temporary_token = Str::random(40);
             $user->save();
             $data = [
-                
+
                 'email' => $user->email,
                 'password' => $request->password
             ];
@@ -239,10 +241,12 @@ class UserAuthController extends Controller
         $data['code']    = 200;
         $data['message'] = 'success';
         $data['error']   = NULL;
+        $data['data']['id'] = auth()->user()->id;
         $data['data']['f_name']    = auth()->user()->f_name;
         $data['data']['l_name']    = auth()->user()->l_name;
+        $data['data']['phone']    = auth()->user()->phone;
         $data['data']['token']    = $token;
-       
+
         return json_encode($data);
             }
         }
@@ -253,6 +257,62 @@ class UserAuthController extends Controller
             'errors' => $errors
         ], 401);
 
+     }
+
+     public function settings_update(Request $request)
+    {
+        // dd(6);
+        $request->validate([
+            'f_name' => 'required',
+            'l_name' => 'required',
+            'email' => 'required',
+        ], [
+            'f_name.required' => 'First name is required!',
+        ]);
+
+        $user  = User::find($request->user_id);
+        // dd($user);
+
+        if ($request->has('image')) {
+            $image_name =Helpers::update('admin/', $user->image, 'png', $request->file('image'));
+        } else {
+            $image_name = $user['image'];
+        }
+            // dd($branch);
+        $user->f_name = $request->f_name;
+        $user->l_name = $request->l_name;
+        $user->email = $request->email;
+        $user->phone = @$request->phone;
+        $user->image = @$image_name;
+        $user->save();
+        Toastr::success('Admin updated successfully!');
+
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+
+        return json_encode($data);
     }
+
+
+    public function settings_password_update(Request $request)
+    {
+        // $request->validate([
+        //     'password' => 'required|same:confirm_password|min:8'
+
+        // ]);
+
+        $user = User::find($request->user_id);
+        $user->password = bcrypt($request['password']);
+        $user->save();
+        Toastr::success('Admin password updated successfully!');
+
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+
+        return json_encode($data);
+    }
+
 
 }
