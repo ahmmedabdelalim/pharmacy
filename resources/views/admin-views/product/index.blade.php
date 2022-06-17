@@ -68,7 +68,7 @@
 
                     <div id="from_part_2">
                         <div class="row">
-                            <div class="col-6">
+                            {{-- <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('price')}}</label>
@@ -76,7 +76,7 @@
                                            class="form-control"
                                            placeholder="Ex : 100" required>
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
@@ -141,14 +141,14 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4 col-12">
+                            {{-- <div class="col-md-4 col-12">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('stock')}}</label>
                                     <input type="number" min="0" max="100000000" value="0" name="stock" class="form-control"
                                            placeholder="Ex : 100">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-md-4 col-12">
                                 <div class="form-group">
                                     <label class="input-label"
@@ -229,7 +229,7 @@
                 </form>
             </div>
         </div>
-    </div> 
+    </div>
 
 @endsection
 

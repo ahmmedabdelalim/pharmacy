@@ -321,7 +321,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </li> 
+                        </li>
                         <!-- End Pages -->
 
                         {{-- <li class="nav-item">
@@ -365,7 +365,7 @@
                         </li> --}}
 
                         <!-- Pages -->
-                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/reviews*')?'active':''}}">
+                        {{-- <li class="navbar-vertical-aside-has-menu {{Request::is('admin/reviews*')?'active':''}}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
                                href="{{route('admin.reviews.list')}}"
                             >
@@ -374,7 +374,7 @@
                                     {{\App\CentralLogics\translate('product')}} {{\App\CentralLogics\translate('reviews')}}
                                 </span>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- End Pages -->
 
 

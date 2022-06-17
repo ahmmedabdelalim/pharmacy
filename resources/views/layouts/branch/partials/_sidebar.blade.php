@@ -121,14 +121,14 @@
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                 >
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link " href="{{route('branch.product.add-new')}}"
                                        title="add new product">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span
                                             class="text-truncate">{{\App\CentralLogics\translate('add')}} {{\App\CentralLogics\translate('new')}}</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item {{Request::is('branch/product/list')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.product.list')}}" title="product list">
                                         <span class="tio-circle nav-indicator-icon"></span>

@@ -106,6 +106,21 @@ class MedicineController extends Controller
         return json_encode($data);
     }
 
+    public function search_composition(Request $request)
+    {
+        $key = explode(' ', $request['search']);
+        $products = Product::where(function ($q) use ($key) {
+            foreach ($key as $value) {
+                $q->orWhere('composition', 'like', "%{$value}%");
+            }
+        })->get();
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $products;
+        return json_encode($data);
+    }
+
     public function product_detail(Request $request)
     {
         $product = Product::where('id' , $request->product_id)->get();

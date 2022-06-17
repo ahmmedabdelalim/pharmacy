@@ -116,7 +116,7 @@
                         </div>
                     @endif
                     <div id="from_part_2">
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label class="input-label"
@@ -126,22 +126,19 @@
                                            placeholder="Ex : 100" required>
                                 </div>
                             </div>
-
-
-
-                        </div>
+                        </div> --}}
 
                         <div class="row">
 
 
-                            <div class="col-md-4 col-4">
+                            {{-- <div class="col-md-4 col-4">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('stock')}}</label>
                                     <input type="number" min="0" max="100000000" value="{{$product['stock']}}" name="total_stock" class="form-control"
                                            placeholder="Ex : 100">
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
 
                         <div class="row">
@@ -151,11 +148,11 @@
                                     <label class="input-label"
                                            for="exampleFormControlSelect1">{{\App\CentralLogics\translate('category')}}<span
                                             class="input-label-secondary">*</span></label>
-                                    <select name="category_id" id="category-id" class="form-control js-select2-custom"
+                                            <select name="category_id" class="form-control js-select2-custom"
                                             onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-categories')">
+                                        <option value="{{$product['category_id']}}">---{{\App\CentralLogics\translate('select')}}---</option>
                                         @foreach($categories as $category)
-                                            <option
-                                                value="{{$category['id']}}" {{ $category->id==$product_category[0]->id ? 'selected' : ''}} >{{$category['name']}}</option>
+                                            <option value="{{$category['id']}}">{{$category['name']}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -273,12 +270,7 @@
 
         $(document).ready(function () {
             setTimeout(function () {
-                let category = $("#category-id").val();
-                let sub_category = '{{count($product_category)>=2?$product_category[1]->id:''}}';
-                let sub_sub_category = '{{count($product_category)>=3?$product_category[2]->id:''}}';
-                getRequest('{{url('/')}}/admin/product/get-categories?parent_id=' + category + '&&sub_category=' + sub_category, 'sub-categories');
-                getRequest('{{url('/')}}/admin/product/get-categories?parent_id=' + sub_category + '&&sub_category=' + sub_sub_category, 'sub-sub-categories');
-            }, 1000)
+                           }, 1000)
         });
     </script>
 
