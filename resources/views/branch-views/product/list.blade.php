@@ -171,7 +171,7 @@
                                             <img
                                                 src="{{asset('storage/app/public/product')}}/{{$product['image']}}"
                                                 style="width: 100px"
-                                                onerror="this.src='{{asset('public/assets/admin/img/160x160/img2.jpg')}}'">
+                                                onerror="this.src='{{asset('assets/admin/img/160x160/img2.jpg')}}'">
                                         </div>
                                     </td>
                                     <td>
@@ -236,7 +236,7 @@
                         </div>
                         @if(count($products)==0)
                             <div class="text-center p-4">
-                                <img class="mb-3" src="{{asset('public/assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
+                                <img class="mb-3" src="{{asset('assets/admin')}}/svg/illustrations/sorry.svg" alt="Image Description" style="width: 7rem;">
                                 <p class="mb-0">{{ \App\CentralLogics\translate('No_data_to_show')}}</p>
                             </div>
                         @endif
