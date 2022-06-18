@@ -25,42 +25,24 @@
                     @php($language = $language->value ?? null)
                     @php($default_lang = 'en')
                     @if($language)
-                        @php($default_lang = json_decode($language)[0])
-                        <ul class="nav nav-tabs mb-4">
-                            @foreach(json_decode($language) as $lang)
-                                <li class="nav-item">
-                                    <a class="nav-link lang_link {{$lang == $default_lang? 'active':''}}" href="#" id="{{$lang}}-link">{{\App\CentralLogics\Helpers::get_language_name($lang).'('.strtoupper($lang).')'}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
+
                         <div class="row">
                             <div class="col-6">
-                                @foreach(json_decode($language) as $lang)
-                                    <?php
-                                    if(count($category['translations'])){
-                                        $translate = [];
-                                        foreach($category['translations'] as $t)
-                                        {
-                                            if($t->locale == $lang && $t->key=="name"){
-                                                $translate[$lang]['name'] = $t->value;
-                                            }
-                                        }
-                                    }
-                                    ?>
-                                    <div class="form-group {{$lang != $default_lang ? 'd-none':''}} lang_form" id="{{$lang}}-form">
-                                        <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('name')}} ({{strtoupper($lang)}})</label>
-                                        <input type="text" name="name[]" value="{{$lang==$default_lang?$category['name']:($translate[$lang]['name']??'')}}" class="form-control" placeholder="New Category" {{$lang == $default_lang? 'required':''}}>
+
+                                    <div class="form-group  lang_form" id="form">
+                                        <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('name')}} </label>
+                                        <input type="text" name="name[]" value="{{$category['name']}}" class="form-control" placeholder="New Category">
                                     </div>
-                                    <input type="hidden" name="lang[]" value="{{$lang}}">
-                                @endforeach
+                                    <input type="hidden" name="lang[]" value="">
+
                                 @else
                                     <div class="row">
                                         <div class="col-6">
-                                            <div class="form-group lang_form" id="{{$default_lang}}-form">
-                                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('name')}} ({{strtoupper($lang)}})</label>
+                                            <div class="form-group lang_form" id="form">
+                                                <label class="input-label" for="exampleFormControlInput1">{{\App\CentralLogics\translate('name')}}</label>
                                                 <input type="text" name="name[]" value="{{$category['name']}}" class="form-control" placeholder="New Category" required>
                                             </div>
-                                            <input type="hidden" name="lang[]" value="{{$default_lang}}">
+                                            <input type="hidden" name="lang[]" value="">
                                             @endif
                                             <input name="position" value="0" style="display: none">
                                         </div>
@@ -94,25 +76,7 @@
 
 @push('script_2')
     <script>
-        $(".lang_link").click(function(e){
-            e.preventDefault();
-            $(".lang_link").removeClass('active');
-            $(".lang_form").addClass('d-none');
-            $(this).addClass('active');
-
-            let form_id = this.id;
-            let lang = form_id.split("-")[0];
-            console.log(lang);
-            $("#"+lang+"-form").removeClass('d-none');
-            if(lang == '{{$default_lang}}')
-            {
-                $(".from_part_2").removeClass('d-none');
-            }
-            else
-            {
-                $(".from_part_2").addClass('d-none');
-            }
-        });
+            
     </script>
     <script>
         function readURL(input) {
