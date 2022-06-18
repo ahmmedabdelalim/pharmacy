@@ -302,30 +302,11 @@
     {{-- <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script> --}}
 
     <script>
-        // @if($language)
-        // @foreach(json_decode($language) as $lang)
-        // var {{$lang}}_quill = new Quill('#{{$lang}}_editor', {
-        //     theme: 'snow'
-        // });
-        // @endforeach
-        // @else
-        // var en_quill = new Quill('#editor', {
-        //     theme: 'snow'
-        // });
-        // @endif
+
 
         $('#product_form').on('submit', function () {
 
-            // @if($language)
-            // @foreach(json_decode($language) as $lang)
-            // var {{$lang}}_myEditor = document.querySelector('#{{$lang}}_editor');
-            // $("#{{$lang}}_hiddenArea").val({{$lang}}_myEditor.children[0].innerHTML);
-            // @endforeach
-            // @else
-            // var myEditor = document.querySelector('#editor');
-            // $("#hiddenArea").val(myEditor.children[0].innerHTML);
-            // @endif
-
+            
             var formData = new FormData(this);
 
             $.ajaxSetup({
