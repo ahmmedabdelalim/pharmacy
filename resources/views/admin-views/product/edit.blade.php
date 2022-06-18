@@ -42,15 +42,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label" for="composition">{{\App\CentralLogics\translate('composition')}} </label>
-                                    <input type="text"  name="composition[]" id="composition" value="$product['composition']}}" class="form-control" placeholder="New Product" >
+                                    <input type="text"  name="composition[]" id="composition" value="{{$product['composition']}}" class="form-control" placeholder="New Product" >
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label" for="dosage">{{\App\CentralLogics\translate('dosage')}} </label>
-                                    <input type="text"  name="dosage[]" id="dosage" value="$product['dosage']}}" class="form-control" placeholder="New Product" >
+                                    <input type="text"  name="dosage[]" id="dosage" value="{{$product['dosage']}}" class="form-control" placeholder="New Product" >
                                 </div>
                                 <div class="form-group">
                                     <label class="input-label" for="warnings">{{\App\CentralLogics\translate('warnings')}} </label>
-                                    <input type="text"  name="warnings[]" id="warnings" value="$product['warnings']}}" class="form-control" placeholder="New Product" >
+                                    <input type="text"  name="warnings[]" id="warnings" value="{{$product['warnings']}}" class="form-control" placeholder="New Product" >
                                 </div>
                                 <input type="hidden" name="lang[]" value="">
                                 {{-- <div class="form-group pt-4">
@@ -306,7 +306,7 @@
 
         $('#product_form').on('submit', function () {
 
-            
+
             var formData = new FormData(this);
 
             $.ajaxSetup({
