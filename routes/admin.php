@@ -94,7 +94,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::post('store', 'ProductController@store')->name('store');
             Route::get('edit/{id}', 'ProductController@edit')->name('edit');
             Route::post('update/{id}', 'ProductController@update')->name('update');
-            Route::get('lists', 'ProductController@list')->name('list');
+            Route::get('list', 'ProductController@list')->name('list');
             Route::delete('delete/{id}', 'ProductController@delete')->name('delete');
             Route::get('status/{id}/{status}', 'ProductController@status')->name('status');
             Route::post('search', 'ProductController@search')->name('search');
@@ -141,7 +141,7 @@ Route::group(['namespace' => 'Admin', 'as' => 'admin.'], function () {
             Route::get('add-sub-category', 'CategoryController@sub_index')->name('add-sub-category');
             Route::get('add-sub-sub-category', 'CategoryController@sub_sub_index')->name('add-sub-sub-category');
             Route::post('store', 'CategoryController@store')->name('store');
-            Route::get('edits/{id}', 'CategoryController@edit')->name('edit');
+            Route::get('edit/{id}', 'CategoryController@edit')->name('edit');
             Route::post('update/{id}', 'CategoryController@update')->name('update');
             Route::post('store', 'CategoryController@store')->name('store');
             Route::get('status/{id}/{status}', 'CategoryController@status')->name('status');

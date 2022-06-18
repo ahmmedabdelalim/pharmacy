@@ -29,11 +29,7 @@
                     @if($language)
                         <ul class="nav nav-tabs mb-4">
 
-                            @foreach(json_decode($language) as $lang)
-                                <li class="nav-item">
-                                    <a class="nav-link lang_link {{$lang == 'en'? 'active':''}}" href="#" id="{{$lang}}-link">{{\App\CentralLogics\Helpers::get_language_name($lang).'('.strtoupper($lang).')'}}</a>
-                                </li>
-                            @endforeach
+                            
 
                         </ul>
                         @foreach(json_decode($language) as $lang)
