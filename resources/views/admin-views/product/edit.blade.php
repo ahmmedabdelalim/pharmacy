@@ -28,49 +28,31 @@
                     @php($language = $language->value ?? null)
                     @if($language)
                         <ul class="nav nav-tabs mb-4">
-
-                            
-
                         </ul>
-                        @foreach(json_decode($language) as $lang)
-                            <?php
-                            if(count($product['translations'])){
-                                $translate = [];
-                                foreach($product['translations'] as $t)
-                                {
 
-                                    if($t->locale == $lang && $t->key=="name"){
-                                        $translate[$lang]['name'] = $t->value;
-                                    }
-                                    if($t->locale == $lang && $t->key=="description"){
-                                        $translate[$lang]['description'] = $t->value;
-                                    }
 
-                                }
-                            }
-                            ?>
-                            <div class="card p-4 {{$lang != 'en'? 'd-none':''}} lang_form" id="{{$lang}}-form">
+                            <div class="card p-4  lang_form" id="form">
                                 <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_name">{{\App\CentralLogics\translate('name')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == 'en'? 'required':''}} name="name[]" id="{{$lang}}_name" value="{{$translate[$lang]['name']??$product['name']}}" class="form-control" placeholder="New Product" >
+                                    <label class="input-label" for="name">{{\App\CentralLogics\translate('name')}} </label>
+                                    <input type="text" name="name[]" id="name" value="{{$product['name']}}" class="form-control" placeholder="New Product" >
                                 </div>
                                 <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_indication">{{\App\CentralLogics\translate('indication')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == 'en'? 'required':''}} name="indication[]" id="{{$lang}}_indication" value="{{$translate[$lang]['indication']??$product['indication']}}" class="form-control" placeholder="New Product" >
+                                    <label class="input-label" for="indication">{{\App\CentralLogics\translate('indication')}} </label>
+                                    <input type="text"  name="indication[]" id="indication" value="{{$product['indication']}}" class="form-control" placeholder="New Product" >
                                 </div>
                                 <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_composition">{{\App\CentralLogics\translate('composition')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == 'en'? 'required':''}} name="composition[]" id="{{$lang}}_composition" value="{{$translate[$lang]['composition']??$product['composition']}}" class="form-control" placeholder="New Product" >
+                                    <label class="input-label" for="composition">{{\App\CentralLogics\translate('composition')}} </label>
+                                    <input type="text"  name="composition[]" id="composition" value="$product['composition']}}" class="form-control" placeholder="New Product" >
                                 </div>
                                 <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_dosage">{{\App\CentralLogics\translate('dosage')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == 'en'? 'required':''}} name="dosage[]" id="{{$lang}}_dosage" value="{{$translate[$lang]['dosage']??$product['dosage']}}" class="form-control" placeholder="New Product" >
+                                    <label class="input-label" for="dosage">{{\App\CentralLogics\translate('dosage')}} </label>
+                                    <input type="text"  name="dosage[]" id="dosage" value="$product['dosage']}}" class="form-control" placeholder="New Product" >
                                 </div>
                                 <div class="form-group">
-                                    <label class="input-label" for="{{$lang}}_warnings">{{\App\CentralLogics\translate('warnings')}} ({{strtoupper($lang)}})</label>
-                                    <input type="text" {{$lang == 'en'? 'required':''}} name="warnings[]" id="{{$lang}}_warnings" value="{{$translate[$lang]['warnings']??$product['warnings']}}" class="form-control" placeholder="New Product" >
+                                    <label class="input-label" for="warnings">{{\App\CentralLogics\translate('warnings')}} </label>
+                                    <input type="text"  name="warnings[]" id="warnings" value="$product['warnings']}}" class="form-control" placeholder="New Product" >
                                 </div>
-                                <input type="hidden" name="lang[]" value="{{$lang}}">
+                                <input type="hidden" name="lang[]" value="">
                                 {{-- <div class="form-group pt-4">
                                     <label class="input-label"
                                            for="{{$lang}}_description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  ({{strtoupper($lang)}})</label>
@@ -79,12 +61,12 @@
                                 </div> --}}
                                 <div class="form-group pt-4">
                                     <label class="input-label"
-                                           for="{{$lang}}_description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  ({{strtoupper($lang)}})</label>
+                                           for="description">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}}  </label>
                                     {{-- <div id="{{$lang}}_editor" style="min-height: 15rem;">{!! $translate[$lang]['description']??$product['description'] !!}</div> --}}
-                                    <textarea name="description[]" style="min-height: 15rem;width:100%" id="{{$lang}}_hiddenArea">{!! $translate[$lang]['description']??$product['description'] !!}</textarea>
+                                    <textarea name="description[]" style="min-height: 15rem;width:100%" id="hiddenArea">{!! $product['description'] !!}</textarea>
                                 </div>
                             </div>
-                        @endforeach
+
                     @else
                         <div class="card p-4" id="english-form">
                             <div class="form-group">
