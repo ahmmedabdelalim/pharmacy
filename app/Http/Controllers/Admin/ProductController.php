@@ -88,6 +88,7 @@ class ProductController extends Controller
             $query = Product::latest();
         }
         $products = $query->paginate(Helpers::getPagination())->appends($query_param);
+         dd($products);
         return view('admin-views.product.list', compact('products','search'));
     }
 
@@ -128,7 +129,7 @@ class ProductController extends Controller
                 $image_data = Helpers::upload('product/', 'png', $img);
                 array_push($img_names, $image_data);
             }
-            $image_data = json_encode($img_names);
+           // $image_data = json_encode($img_names);
         } else {
             $image_data = json_encode([]);
         }
