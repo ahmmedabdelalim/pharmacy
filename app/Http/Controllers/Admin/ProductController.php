@@ -88,7 +88,7 @@ class ProductController extends Controller
             $query = Product::latest();
         }
         $products = $query->paginate(Helpers::getPagination())->appends($query_param);
-         dd($products);
+        //  dd($products);
         return view('admin-views.product.list', compact('products','search'));
     }
 
