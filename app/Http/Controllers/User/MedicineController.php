@@ -73,7 +73,7 @@ class MedicineController extends Controller
             });
             $query_param = ['search' => $request['search']];
         }else{
-            $categories=Category::with(['parent'])->where(['position'=>1])->where('parent_id',$request->sub_category);
+            $categories=Category::with(['parent'])->where(['position'=>1])->where(['parent_id'=>$request->sub_category]);
         }
         $categories=$categories->latest()->paginate(Helpers::getPagination())->appends($query_param);
 
