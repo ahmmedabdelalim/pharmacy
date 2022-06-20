@@ -141,6 +141,7 @@ class ProductController extends Controller
         $p->dosage = $request->dosage[array_search('en', $request->lang)];
         $p->warnings = $request->warnings[array_search('en', $request->lang)];
         $p->category_id = $request->category_id;
+        $p->sub_category = $request->sub_category_id;
         $p->description = $request->description[array_search('en', $request->lang)];
         $p->price = 0;
         $p->image = $image_data;
@@ -184,8 +185,9 @@ class ProductController extends Controller
         $product = Product::withoutGlobalScopes()->with('translations')->find($id);
         $product_category = json_decode($product->category_id);
         $categories = Category::where(['parent_id' => 0])->get();
+        $sub_categories = Category::where(['position' => 1])->get();
         // dd($product);
-        return view('admin-views.product.edit', compact('product', 'product_category', 'categories'));
+        return view('admin-views.product.edit', compact('product', 'product_category', 'sub_categories','categories'));
     }
 
     public function status(Request $request)
@@ -216,29 +218,28 @@ class ProductController extends Controller
         ]);
 
         $p = Product::find($id);
-        $images = json_decode($p->image);
+        $images = $p->image;
         if (!empty($request->file('images'))) {
             foreach ($request->images as $img) {
                 $image_data = Helpers::upload('product/', 'png', $img);
-                array_push($images, $image_data);
+                //array_push($images, $image_data);
             }
 
         }
 
-        if (!count($images)) {
-            $validator->getMessageBag()->add('images', 'Image can not be empty!');
-        }
+        
 
         $p->name = $request->name[array_search('en', $request->lang)];
         $p->price = $request->price;
         $p->category_id = $request->category_id;
+        $p->sub_category = $request->sub_category_id;
         $p->price = 0;
         $p->composition = $request->composition[array_search('en', $request->lang)];
         $p->indication = $request->indication[array_search('en', $request->lang)];
         $p->dosage = $request->dosage[array_search('en', $request->lang)];
         $p->warnings = $request->warnings[array_search('en', $request->lang)];
         $p->description = $request->description[array_search('en', $request->lang)];
-        $p->image = json_encode($images);
+        $p->image = $image_data;
         $p->save();
 
         // $category = [];
@@ -329,30 +330,6 @@ class ProductController extends Controller
 
 
 
-        foreach($request->lang as $index=>$key)
-        {
-            if($request->name[$index] && $key != 'en')
-            {
-                Translation::updateOrInsert(
-                    ['translationable_type'  => 'App\Model\Product',
-                        'translationable_id'    => $p->id,
-                        'locale'                => $key,
-                        'key'                   => 'name'],
-                    ['value'                 => $request->name[$index]]
-                );
-            }
-            if($request->description[$index] && $key != 'en')
-            {
-                Translation::updateOrInsert(
-                    ['translationable_type'  => 'App\Model\Product',
-                        'translationable_id'    => $p->id,
-                        'locale'                => $key,
-                        'key'                   => 'description'],
-                    ['value'                 => $request->description[$index]]
-                );
-            }
-        }
-
         return response()->json([], 200);
     }
 
@@ -378,14 +355,14 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         $img_arr = [];
-        foreach (json_decode($product['image'], true) as $img) {
-            if (strcmp($img, $name) != 0) {
-                array_push($img_arr, $img);
+
+            if (strcmp($product['image'], $name) != 0) {
+                $img_arr=$product['image'];
             }
-        }
+
 
         Product::where(['id' => $id])->update([
-            'image' => json_encode($img_arr),
+            'image' => $img_arr,
         ]);
 
         Toastr::success('Image removed successfully!');

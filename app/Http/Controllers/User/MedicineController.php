@@ -106,7 +106,7 @@ class MedicineController extends Controller
             })->latest();
             $query_param = ['search' => $request['search']];
         }else{
-            $query = Product::where('category_id',$request->category_id)->latest();
+            $query = Product::where('sub_category',$request->category_id)->latest();
         }
         $products = $query->paginate(Helpers::getPagination())->appends($query_param);
         $data['code']    = 200;

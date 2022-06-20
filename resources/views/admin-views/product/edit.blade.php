@@ -134,7 +134,20 @@
                                         @endforeach
                                     </select>
                                 </div>
+
                             </div>
+                            <div class="col-md-4 col-12">
+                                <div class="form-group">
+                                    <label class="input-label"
+                                           for="exampleFormControlSelect1">{{\App\CentralLogics\translate('sub_category')}}<span
+                                            class="input-label-secondary"></span></label>
+                                    <select name="sub_category_id" id="sub-categories"
+                                            class="form-control js-select2-custom"
+                                            onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-sub-categories')">
+
+                                    </select>
+                                </div>
+                            </div> 
 
                         </div>
 
@@ -145,15 +158,15 @@
                                 style="color: red">* ( {{\App\CentralLogics\translate('ratio')}} 1:1 )</small>
                             <div>
                                 <div class="row mb-3">
-                                    @foreach(json_decode($product['image'],true) as $img)
+
                                         <div class="col-3">
                                             <img style="height: 200px;width: 100%"
-                                                 src="{{asset('storage/app/public/product')}}/{{$img}}">
-                                            <a href="{{route('admin.product.remove-image',[$product['id'],$img])}}"
+                                                 src="{{asset('storage/app/public/product')}}/{{$product['image']}}">
+                                            <a href="{{route('admin.product.remove-image',[$product['id'],$product['image']])}}"
                                                style="margin-top: -35px;border-radius: 0"
                                                class="btn btn-danger btn-block btn-sm">Remove</a>
                                         </div>
-                                    @endforeach
+
                                 </div>
                                 <div class="row" id="coba"></div>
                             </div>

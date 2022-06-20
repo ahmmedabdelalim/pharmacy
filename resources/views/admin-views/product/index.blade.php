@@ -163,7 +163,7 @@
                                     </select>
                                 </div>
                             </div>
-                            {{-- <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlSelect1">{{\App\CentralLogics\translate('sub_category')}}<span
@@ -174,7 +174,7 @@
 
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div> 
                             {{--<div class="col-md-4 col-6">
                                 <div class="form-group">
                                     <label class="input-label" for="exampleFormControlSelect1">Sub Sub Category<span

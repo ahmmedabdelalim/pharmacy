@@ -19,7 +19,7 @@ class Product extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-    protected $fillable = ['name', 'description', 'warnings', 'price', 'composition', 'category_id', 'discount', 'indication', 'status'];
+    protected $fillable = ['name', 'description', 'warnings', 'price', 'composition', 'category_id', 'sub_category', 'discount', 'indication', 'status'];
 
     public function translations()
     {
