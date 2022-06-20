@@ -58,6 +58,32 @@ class MedicineController extends Controller
         return json_encode($data);
     }
 
+    function sub_category(Request $request)
+    {
+        $query_param = [];
+        $search = $request['search'];
+        if($request->has('search'))
+        {
+            $key = explode(' ', $request['search']);
+            $categories=Category::with(['parent'])->where(['position'=>1])
+                    ->where(function ($q) use ($key) {
+                        foreach ($key as $value) {
+                            $q->orWhere('name', 'like', "%{$value}%");
+                        }
+            });
+            $query_param = ['search' => $request['search']];
+        }else{
+            $categories=Category::with(['parent'])->where(['position'=>1])->where('parent_id',$request->sub_category);
+        }
+        $categories=$categories->latest()->paginate(Helpers::getPagination())->appends($query_param);
+
+        $data['code']    = 200;
+        $data['message'] = 'success';
+        $data['error']   = NULL;
+        $data['data']    = $categories;
+        return json_encode($data);
+    }
+
     // public function products()
     // {
     //     $products = Product::search()->get();

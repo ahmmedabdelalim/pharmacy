@@ -19,6 +19,7 @@ Route::group(['prefix' => 'auth'], function () {
 
 // get categories
 Route::get('/user/categories', [MedicineController::class,'categories']);
+Route::get('/user/sub_category', [MedicineController::class,'sub_category']);
 Route::get('/user/product_by_cat', [MedicineController::class,'product_by_cat']);
 Route::get('/user/search', [MedicineController::class,'search']);
 Route::get('/user/search_composition', [MedicineController::class,'search_composition']);
