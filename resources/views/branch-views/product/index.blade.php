@@ -141,7 +141,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-4 col-12">
+                             <div class="col-md-4 col-12">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlInput1">{{\App\CentralLogics\translate('stock')}}</label>
@@ -163,18 +163,18 @@
                                     </select>
                                 </div>
                             </div>
-                            {{-- <div class="col-md-4 col-12">
+                            <div class="col-md-4 col-12">
                                 <div class="form-group">
                                     <label class="input-label"
                                            for="exampleFormControlSelect1">{{\App\CentralLogics\translate('sub_category')}}<span
                                             class="input-label-secondary"></span></label>
                                     <select name="sub_category_id" id="sub-categories"
                                             class="form-control js-select2-custom"
-                                            onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-sub-categories')">
+                                            onchange="getRequest('{{url('/')}}/branch/product/get-categories?parent_id='+this.value,'sub-sub-categories')">
 
                                     </select>
                                 </div>
-                            </div> --}}
+                            </div>
                             {{--<div class="col-md-4 col-6">
                                 <div class="form-group">
                                     <label class="input-label" for="exampleFormControlSelect1">Sub Sub Category<span

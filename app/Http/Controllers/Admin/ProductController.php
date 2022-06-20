@@ -227,7 +227,7 @@ class ProductController extends Controller
 
         }
 
-        
+
 
         $p->name = $request->name[array_search('en', $request->lang)];
         $p->price = $request->price;
@@ -427,19 +427,10 @@ class ProductController extends Controller
                 'warnings' => $collection['warnings'],
                 'image' => json_encode(['def.png']),
                 'price' => $collection['price'],
-                // 'variations' => json_encode([]),
-                // 'tax' => $collection['tax'],
                 'status' => 1,
-                // 'attributes' => json_encode([]),
                 'category_id' =>  $collection['category_id'],
-                // 'choice_options' => json_encode([]),
-                // 'discount' => $collection['discount'],
-                // 'discount_type' => $collection['discount_type'],
-                // 'tax_type' => $collection['tax_type'],
-                // 'unit' => $collection['unit'],
-                //'stock' => $collection['stock'],
-                // 'capacity' => $collection['capacity'],
-                // 'daily_needs' => $collection['daily_needs'],
+                'sub_category' =>  $collection['sub_category'],
+
             ]);
         }
         DB::table('products')->insert($data);
@@ -470,6 +461,7 @@ class ProductController extends Controller
                 'composition' => $item['composition'],
                 'status' => $item['status'],
                 'category_id'=>$item['category_id'],
+                'sub_category'=>$item['sub_category'],
 
 
             ];

@@ -11,6 +11,8 @@ class pharmacy_product extends Model
 {
 
     protected $table = 'pharmacy_product';
+    protected $fillable = ['name', 'product_id','description', 'warnings', 'price', 'composition', 'category_id', 'sub_category', 'discount', 'indication', 'status'];
+
     protected $casts = [
         'pharmacy_id'=> 'integer',
         'tax'         => 'float',

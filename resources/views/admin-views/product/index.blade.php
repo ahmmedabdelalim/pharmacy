@@ -63,7 +63,7 @@
                                        for="exampleFormControlInput1">{{\App\CentralLogics\translate('short')}} {{\App\CentralLogics\translate('description')}} (EN)</label>
 
                                 <textarea name="description[]" style="min-height: 15rem;width:100%" id="hiddenArea"></textarea>
-                            </div>--}}
+                            </div>--}} 
                         </div>
 
                     <div id="from_part_2">
@@ -174,7 +174,7 @@
 
                                     </select>
                                 </div>
-                            </div> 
+                            </div>
                             {{--<div class="col-md-4 col-6">
                                 <div class="form-group">
                                     <label class="input-label" for="exampleFormControlSelect1">Sub Sub Category<span

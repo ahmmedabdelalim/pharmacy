@@ -93,13 +93,13 @@
                                     </a>
                                 </li>
 
-                                {{-- <li class="nav-item {{Request::is('branch/category/add-sub-category')?'active':''}}">
+                                 <li class="nav-item {{Request::is('branch/category/add-sub-category')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.category.add-sub-category')}}"
                                        title="add new sub category">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span class="text-truncate">{{\App\CentralLogics\translate('sub_category')}}</span>
                                     </a>
-                                </li> --}}
+                                </li>
 
                                 {{--<li class="nav-item {{Request::is('branch/category/add-sub-sub-category')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.category.add-sub-sub-category')}}"
@@ -121,14 +121,14 @@
                             </a>
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                 >
-                                {{-- <li class="nav-item">
+                               <li class="nav-item">
                                     <a class="nav-link " href="{{route('branch.product.add-new')}}"
                                        title="add new product">
                                         <span class="tio-circle nav-indicator-icon"></span>
                                         <span
                                             class="text-truncate">{{\App\CentralLogics\translate('add')}} {{\App\CentralLogics\translate('new')}}</span>
                                     </a>
-                                </li> --}}
+                                </li>  
                                 <li class="nav-item {{Request::is('branch/product/list')?'active':''}}">
                                     <a class="nav-link " href="{{route('branch.product.list')}}" title="product list">
                                         <span class="tio-circle nav-indicator-icon"></span>
