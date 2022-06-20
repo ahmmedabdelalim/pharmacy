@@ -99,7 +99,7 @@ class CategoryController extends Controller
         $category->name = $request->name[array_search('en', $request->lang)];
         $category->image = $image_name;
         $category->parent_id = $request->parent_id == null ? 0 : $request->parent_id;
-        $category->position = $request->position;
+        $category->position = $request->position; 
         $category->save();
 
         $data = [];
